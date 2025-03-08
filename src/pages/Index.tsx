@@ -1,19 +1,12 @@
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ServicesShowcase from "@/components/ServicesShowcase";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const scrollRef = useRef(null);
-  const { scrollYProgress } = useScroll();
-  
-  // Parallax values for background elements
-  const bgParallax1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
-  const bgParallax2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const bgRotate = useTransform(scrollYProgress, [0, 1], [0, 10]);
 
   // Simulate loading
   useEffect(() => {
@@ -23,16 +16,8 @@ const Index = () => {
     return () => clearTimeout(timer);
   }, []);
   
-  // Background decorative elements
-  const BackgroundElement = ({ className, style }) => (
-    <motion.div
-      className={`fixed pointer-events-none ${className}`}
-      style={style}
-    />
-  );
-  
   return (
-    <div ref={scrollRef} className="relative overflow-x-hidden">
+    <div className="relative overflow-x-hidden">
       <AnimatePresence>
         {isLoading ? (
           <LoadingScreen key="loading" />
@@ -45,20 +30,6 @@ const Index = () => {
             transition={{ duration: 0.5 }} 
             className="min-h-screen bg-background"
           >
-            {/* Background decorative elements */}
-            <BackgroundElement 
-              className="w-64 h-64 rounded-full bg-purple-500/5 blur-3xl -right-20 top-40 z-0"
-              style={{ y: bgParallax1, rotate: bgRotate }}
-            />
-            <BackgroundElement 
-              className="w-96 h-96 rounded-full bg-neon-green/5 blur-3xl -left-40 top-96 z-0"
-              style={{ y: bgParallax2, rotate: useTransform(scrollYProgress, [0, 1], [0, -15]) }}
-            />
-            <BackgroundElement 
-              className="w-80 h-80 rounded-full bg-blue-500/5 blur-3xl right-20 bottom-20 z-0"
-              style={{ y: useTransform(scrollYProgress, [0, 1], [0, -150]) }}
-            />
-            
             <Navbar />
             <div className="pb-32">
               <Hero />
