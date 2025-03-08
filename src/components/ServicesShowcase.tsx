@@ -1,6 +1,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Hand } from "lucide-react";
 
 const ServicesShowcase = () => {
   const services = [
@@ -20,7 +21,6 @@ const ServicesShowcase = () => {
     offset: ["start end", "end start"]
   });
 
-  const boxY = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0, 1, 1, 0.3]);
   const scale = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0.9, 1, 1, 0.95]);
 
@@ -31,14 +31,13 @@ const ServicesShowcase = () => {
       style={{ opacity, scale }}
     >
       <div className="flex justify-center items-center">
-        <div className="relative w-full max-w-3xl">
-          {/* Green rectangle background */}
+        <div className="relative w-full max-w-5xl">
+          {/* Neon green rectangle background */}
           <motion.div 
-            className="bg-neon-green rounded-[2.5rem] p-12 pt-16 pb-16 relative z-10"
-            style={{ y: boxY }}
+            className="bg-neon-green rounded-[2rem] p-8 md:p-12 pt-16 pb-16 relative z-10 mx-4 md:mx-0"
           >
             <motion.div 
-              className="flex flex-col items-end text-right space-y-2"
+              className="flex flex-col items-end text-right space-y-2 md:space-y-4"
             >
               {services.map((service, index) => (
                 <motion.div
@@ -46,7 +45,7 @@ const ServicesShowcase = () => {
                   className="font-display text-3xl md:text-5xl xl:text-6xl font-bold text-black"
                   initial={{ x: 50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.8 + (index * 0.1), duration: 0.5 }}
+                  transition={{ delay: 0.1 + (index * 0.05), duration: 0.5 }}
                 >
                   {service}
                 </motion.div>
@@ -56,27 +55,66 @@ const ServicesShowcase = () => {
 
           {/* "WE OFFER" bubble */}
           <motion.div
-            className="absolute -left-10 top-20 md:-left-32 md:top-32 z-20 bg-black rounded-full p-6 md:p-10"
+            className="absolute -left-4 md:-left-32 top-10 md:top-20 z-20 bg-black text-white rounded-full p-6 md:p-10"
             initial={{ scale: 0, rotate: -20 }}
             animate={{ scale: 1, rotate: 0 }}
-            transition={{ delay: 1.2, duration: 0.5, type: "spring" }}
+            transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
           >
-            <span className="font-display text-xl md:text-4xl font-bold text-white whitespace-nowrap">
-              WE OFFER 🏄
+            <span className="font-display text-xl md:text-4xl font-bold whitespace-nowrap flex items-center gap-2">
+              WE OFFER <Hand className="inline-block h-6 w-6 md:h-8 md:w-8" />
             </span>
           </motion.div>
 
-          {/* Floating elements */}
+          {/* Pixelated cursor graphic */}
           <motion.div
-            className="absolute -right-20 -bottom-20 z-20"
+            className="absolute -right-10 md:-right-20 bottom-20 z-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
             style={{ 
-              y: useTransform(scrollYProgress, [0, 1], [0, -100]),
-              rotate: useTransform(scrollYProgress, [0, 1], [0, 20]) 
+              y: useTransform(scrollYProgress, [0, 1], [0, -50]),
+              rotate: useTransform(scrollYProgress, [0, 1], [0, 10]) 
             }}
           >
             <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M40 0H20V20H0V40H20V60H40V40H60V20H40V0Z" fill="#8F7AFF"/>
-              <path d="M100 40H80V60H60V80H80V100H100V80H120V60H100V40Z" fill="#8F7AFF"/>
+              <g transform="translate(10, 10) scale(0.83)">
+                <rect x="0" y="0" width="12" height="12" fill="#8F7AFF" />
+                <rect x="12" y="0" width="12" height="12" fill="#8F7AFF" />
+                <rect x="24" y="0" width="12" height="12" fill="#8F7AFF" />
+                <rect x="36" y="0" width="12" height="12" fill="#8F7AFF" />
+                <rect x="0" y="12" width="12" height="12" fill="#8F7AFF" />
+                <rect x="12" y="12" width="12" height="12" fill="#8F7AFF" />
+                <rect x="24" y="12" width="12" height="12" fill="#8F7AFF" />
+                <rect x="36" y="12" width="12" height="12" fill="#8F7AFF" />
+                <rect x="48" y="12" width="12" height="12" fill="#8F7AFF" />
+                <rect x="0" y="24" width="12" height="12" fill="#8F7AFF" />
+                <rect x="12" y="24" width="12" height="12" fill="#8F7AFF" />
+                <rect x="24" y="24" width="12" height="12" fill="#8F7AFF" />
+                <rect x="36" y="24" width="12" height="12" fill="#8F7AFF" />
+                <rect x="48" y="24" width="12" height="12" fill="#8F7AFF" />
+                <rect x="60" y="24" width="12" height="12" fill="#8F7AFF" />
+                <rect x="0" y="36" width="12" height="12" fill="#8F7AFF" />
+                <rect x="12" y="36" width="12" height="12" fill="#8F7AFF" />
+                <rect x="24" y="36" width="12" height="12" fill="#8F7AFF" />
+                <rect x="36" y="36" width="12" height="12" fill="#8F7AFF" />
+                <rect x="48" y="36" width="12" height="12" fill="#8F7AFF" />
+                <rect x="60" y="36" width="12" height="12" fill="#8F7AFF" />
+                <rect x="72" y="36" width="12" height="12" fill="#8F7AFF" />
+                <rect x="0" y="48" width="12" height="12" fill="#8F7AFF" />
+                <rect x="12" y="48" width="12" height="12" fill="#8F7AFF" />
+                <rect x="24" y="48" width="12" height="12" fill="#8F7AFF" />
+                <rect x="36" y="48" width="12" height="12" fill="#8F7AFF" />
+                <rect x="48" y="48" width="12" height="12" fill="#8F7AFF" />
+                <rect x="60" y="48" width="12" height="12" fill="#8F7AFF" />
+                <rect x="72" y="48" width="12" height="12" fill="#8F7AFF" />
+                <rect x="84" y="48" width="12" height="12" fill="#8F7AFF" />
+                <rect x="12" y="60" width="12" height="12" fill="#8F7AFF" />
+                <rect x="24" y="60" width="12" height="12" fill="#8F7AFF" />
+                <rect x="36" y="60" width="12" height="12" fill="#8F7AFF" />
+                <rect x="48" y="60" width="12" height="12" fill="#8F7AFF" />
+                <rect x="24" y="72" width="12" height="12" fill="#8F7AFF" />
+                <rect x="36" y="72" width="12" height="12" fill="#8F7AFF" />
+              </g>
             </svg>
           </motion.div>
         </div>
