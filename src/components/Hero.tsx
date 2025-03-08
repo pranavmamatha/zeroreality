@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
@@ -9,12 +8,11 @@ const Hero = () => {
   const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
 
-  const serviceTexts = ["websites", "mobile applications", "ai solutions", "DESIGN"];
+  const serviceTexts = ["websites", "mobile applications", "designs", "ai solutions"];
   const questionText = "Ready to scale your brand?";
   const staticText = "We create Awesome";
 
   useEffect(() => {
-    // Blink the cursor
     const cursorInterval = setInterval(() => {
       setShowCursor(prev => !prev);
     }, 500);
@@ -26,25 +24,21 @@ const Hero = () => {
     let timeout: NodeJS.Timeout;
     
     if (isTyping) {
-      // Typing effect for the current service - character by character
       if (displayedText.length < serviceTexts[currentTextIndex].length) {
         timeout = setTimeout(() => {
           setDisplayedText(prev => prev + serviceTexts[currentTextIndex][prev.length]);
         }, 100);
       } else {
-        // Pause at the end of typing
         timeout = setTimeout(() => {
           setIsTyping(false);
         }, 1500);
       }
     } else {
-      // Deleting effect - character by character
       if (displayedText.length > 0) {
         timeout = setTimeout(() => {
           setDisplayedText(prev => prev.slice(0, -1));
         }, 50);
       } else {
-        // Move to the next service text
         timeout = setTimeout(() => {
           setCurrentTextIndex((prev) => (prev + 1) % serviceTexts.length);
           setIsTyping(true);
