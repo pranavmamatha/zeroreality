@@ -1,5 +1,7 @@
+
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+
 const Hero = () => {
   const containerVariants = {
     hidden: {
@@ -13,6 +15,7 @@ const Hero = () => {
       }
     }
   };
+  
   const itemVariants = {
     hidden: {
       opacity: 0,
@@ -28,6 +31,7 @@ const Hero = () => {
       }
     }
   };
+  
   const wordVariants = {
     hidden: {
       opacity: 0,
@@ -42,6 +46,7 @@ const Hero = () => {
       }
     })
   };
+  
   const greenTextVariants = {
     hidden: {
       opacity: 0,
@@ -56,6 +61,7 @@ const Hero = () => {
       }
     }
   };
+  
   const buttonVariants = {
     hidden: {
       opacity: 0,
@@ -80,44 +86,68 @@ const Hero = () => {
       }
     }
   };
+  
   const titleWords = ['Premium', 'Design', 'via', 'simple'];
-  return <div className="min-h-screen flex items-center justify-center relative px-6 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30" />
+  
+  return (
+    <div className="min-h-screen flex items-center justify-center relative px-6 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background/10 to-background/30" />
       
-      <motion.div variants={containerVariants} initial="hidden" animate="visible" className="text-center z-10 max-w-5xl mx-auto pt-24">
+      <motion.div 
+        variants={containerVariants} 
+        initial="hidden" 
+        animate="visible" 
+        className="text-center z-10 max-w-5xl mx-auto pt-24"
+      >
         <div className="flex flex-col gap-4 items-center">
           <div className="flex flex-wrap justify-center">
-            {titleWords.map((word, i) => <motion.div key={i} custom={i} variants={wordVariants} className="mx-2 md:mx-4">
-                <span className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-white tracking-tight">
+            {titleWords.map((word, i) => (
+              <motion.div 
+                key={i} 
+                custom={i} 
+                variants={wordVariants} 
+                className="mx-2 md:mx-4"
+              >
+                <span className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-foreground tracking-tight">
                   {word}
                 </span>
-              </motion.div>)}
+              </motion.div>
+            ))}
           </div>
           
-          <motion.div variants={greenTextVariants} className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-neon-green tracking-tight">
+          <motion.div 
+            variants={greenTextVariants} 
+            className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-neon-green tracking-tight"
+          >
             monthly subscription
           </motion.div>
           
-          <motion.div variants={itemVariants} className="mt-8 text-white/60 text-sm flex items-center justify-center">
+          <motion.div 
+            variants={itemVariants} 
+            className="mt-8 text-foreground/60 text-sm flex items-center justify-center"
+          >
             ✦ PAUSE OR CANCEL ANYTIME ✦
           </motion.div>
           
-          
-          
-          <motion.button variants={buttonVariants} whileHover="hover" whileTap={{
-          scale: 0.95
-        }} className="mt-16 relative flex items-center justify-center gap-4 bg-transparent border border-white/20 text-white py-4 px-10 rounded-full overflow-hidden group">
+          <motion.button 
+            variants={buttonVariants} 
+            whileHover="hover" 
+            whileTap={{ scale: 0.95 }} 
+            className="mt-16 relative flex items-center justify-center gap-4 bg-transparent border border-foreground/20 text-foreground py-4 px-10 rounded-full overflow-hidden group"
+          >
             <span className="z-10 font-medium text-xl">View pricing</span>
-            <motion.div className="z-10 bg-neon-green rounded-full p-2" whileHover={{
-            rotate: 45,
-            backgroundColor: "#8BFF00"
-          }}>
+            <motion.div 
+              className="z-10 bg-neon-green rounded-full p-2" 
+              whileHover={{ rotate: 45, backgroundColor: "#8BFF00" }}
+            >
               <ArrowDown size={20} className="text-black" />
             </motion.div>
-            <div className="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors duration-300" />
+            <div className="absolute inset-0 bg-foreground/5 group-hover:bg-foreground/10 transition-colors duration-300" />
           </motion.button>
         </div>
       </motion.div>
-    </div>;
+    </div>
+  );
 };
+
 export default Hero;
