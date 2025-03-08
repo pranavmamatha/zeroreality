@@ -28,6 +28,14 @@ export function ThemeProvider({
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
 
+  // Load saved theme from localStorage on initial render
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") as Theme;
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+  }, []);
+
   useEffect(() => {
     const root = window.document.documentElement;
     
