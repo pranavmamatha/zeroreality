@@ -1,9 +1,9 @@
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ServicesShowcase from "@/components/ServicesShowcase";
+import WorkShowcase from "@/components/WorkShowcase";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -69,9 +69,10 @@ const Index = () => {
             </motion.div>
             
             <Navbar />
-            <div className="pb-32 relative z-10">
+            <div className="relative z-10">
               <Hero />
               <ServicesShowcase />
+              <WorkShowcase />
             </div>
           </motion.div>
         )}
