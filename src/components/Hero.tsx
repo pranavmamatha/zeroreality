@@ -9,11 +9,12 @@ const Hero = () => {
   const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
 
-  const serviceTexts = ["websites", "mobile applications", "designs", "ai solutions"];
+  const serviceTexts = ["websites", "mobile applications", "ai solutions", "DESIGN"];
   const questionText = "Ready to scale your brand?";
   const staticText = "We create Awesome";
 
   useEffect(() => {
+    // Blink the cursor
     const cursorInterval = setInterval(() => {
       setShowCursor(prev => !prev);
     }, 500);
@@ -25,24 +26,27 @@ const Hero = () => {
     let timeout: NodeJS.Timeout;
     
     if (isTyping) {
+      // Typing effect for the current service
       if (displayedText.length < serviceTexts[currentTextIndex].length) {
         timeout = setTimeout(() => {
           setDisplayedText(prev => prev + serviceTexts[currentTextIndex][prev.length]);
         }, 100);
       } else {
+        // Pause at the end of typing
         timeout = setTimeout(() => {
           setIsTyping(false);
         }, 1500);
       }
     } else {
+      // Deleting effect
       if (displayedText.length > 0) {
         timeout = setTimeout(() => {
           setDisplayedText(prev => prev.slice(0, -1));
         }, 50);
       } else {
+        // Move to the next service text
         timeout = setTimeout(() => {
-          const nextIndex = (currentTextIndex + 1) % serviceTexts.length;
-          setCurrentTextIndex(nextIndex);
+          setCurrentTextIndex((prev) => (prev + 1) % serviceTexts.length);
           setIsTyping(true);
         }, 500);
       }
@@ -50,16 +54,6 @@ const Hero = () => {
 
     return () => clearTimeout(timeout);
   }, [displayedText, currentTextIndex, isTyping, serviceTexts]);
-
-  // Console log to debug the animation state
-  useEffect(() => {
-    console.log({
-      currentTextIndex,
-      displayedText,
-      isTyping,
-      currentService: serviceTexts[currentTextIndex]
-    });
-  }, [currentTextIndex, displayedText, isTyping, serviceTexts]);
 
   const containerVariants = {
     hidden: {
@@ -128,14 +122,14 @@ const Hero = () => {
         <div className="flex flex-col gap-4 items-center">
           <motion.h1 
             variants={itemVariants}
-            className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-foreground tracking-tight mb-6"
+            className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-foreground tracking-tight mb-2"
           >
             {questionText}
           </motion.h1>
           
           <motion.h2
             variants={itemVariants}
-            className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-foreground tracking-tight mb-4"
+            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground tracking-tight mb-4"
           >
             {staticText}
           </motion.h2>
