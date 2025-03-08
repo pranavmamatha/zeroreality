@@ -36,19 +36,19 @@ const ServicesShowcase = () => {
       style={{ opacity, scale }}
     >
       <div className="flex justify-center items-center">
-        <div className="relative w-full max-w-md"> {/* Reduced from max-w-xl to max-w-md */}
-          {/* Green rectangle background - made even smaller */}
+        <div className="relative w-full max-w-xl"> {/* Increased from max-w-md to max-w-xl */}
+          {/* Green rectangle background - made bigger */}
           <motion.div 
-            className="bg-neon-green rounded-[2.5rem] p-6 pt-10 pb-10 relative z-10 max-w-md mx-auto" 
+            className="bg-neon-green rounded-[2.5rem] p-8 pt-12 pb-12 relative z-10 max-w-xl mx-auto" 
             style={{ y: boxY }}
           >
             <motion.div 
-              className="flex flex-col items-end text-right space-y-1" /* Reduced space-y from 2 to 1 */
+              className="flex flex-col items-end text-right space-y-3" /* Increased space-y from 1 to 3 */
             >
               {services.map((service, index) => (
                 <motion.div
                   key={index}
-                  className="font-display text-xl md:text-2xl xl:text-3xl font-bold text-black" /* Reduced text size */
+                  className="font-display text-2xl md:text-3xl xl:text-4xl font-bold text-black" /* Increased font sizes */
                   initial={{ x: 50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.8 + (index * 0.1), duration: 0.5 }}
