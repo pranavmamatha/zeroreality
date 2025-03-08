@@ -10,7 +10,8 @@ const Hero = () => {
   const [showCursor, setShowCursor] = useState(true);
 
   const serviceTexts = ["websites", "mobile applications", "ai solutions", "DESIGN"];
-  const staticText = "Ready to scale your brand? We create Awesome";
+  const questionText = "Ready to scale your brand?";
+  const staticText = "We create Awesome";
 
   useEffect(() => {
     // Blink the cursor
@@ -119,14 +120,19 @@ const Hero = () => {
         className="text-center z-10 max-w-5xl mx-auto pt-24"
       >
         <div className="flex flex-col gap-4 items-center">
-          <div className="flex flex-wrap justify-center mb-4">
-            <motion.h1 
-              variants={itemVariants}
-              className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-foreground tracking-tight"
-            >
-              {staticText}
-            </motion.h1>
-          </div>
+          <motion.h1 
+            variants={itemVariants}
+            className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-foreground tracking-tight mb-2"
+          >
+            {questionText}
+          </motion.h1>
+          
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground tracking-tight mb-4"
+          >
+            {staticText}
+          </motion.h2>
           
           <motion.div 
             variants={itemVariants}
