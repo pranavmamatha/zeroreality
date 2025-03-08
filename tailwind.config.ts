@@ -21,16 +21,7 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
-				display: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
-				monoton: ['Monoton', 'cursive'],
-				bungee: ['Bungee Shade', 'cursive'],
-				faster: ['Faster One', 'cursive'],
-				frijole: ['Frijole', 'cursive'],
-				nabla: ['Nabla', 'cursive'],
-				orbitron: ['Orbitron', 'sans-serif'],
-				glitch: ['Rubik Glitch', 'cursive'],
-				iso: ['Rubik Iso', 'cursive'],
-				vinyl: ['Rubik Vinyl', 'cursive']
+				display: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif']
 			},
 			colors: {
 				border: 'hsl(var(--border))',
