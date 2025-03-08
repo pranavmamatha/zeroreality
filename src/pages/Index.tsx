@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
@@ -74,8 +73,8 @@ const Index = () => {
             <div className="relative z-10">
               <Hero />
               <ServicesShowcase />
-              <HowItWorks />
               <WorkShowcase />
+              <HowItWorks />
             </div>
           </motion.div>
         )}
