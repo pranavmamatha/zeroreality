@@ -1,37 +1,37 @@
-
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
-
 const Navbar = () => {
   const navVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { 
-      opacity: 1, 
+    hidden: {
+      opacity: 0,
+      y: -20
+    },
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         duration: 0.5,
         staggerChildren: 0.1,
         delayChildren: 0.3
       }
     }
   };
-
   const itemVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: { opacity: 1, y: 0 }
+    hidden: {
+      opacity: 0,
+      y: -10
+    },
+    visible: {
+      opacity: 1,
+      y: 0
+    }
   };
-
-  return (
-    <motion.header
-      initial="hidden"
-      animate="visible"
-      variants={navVariants}
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-12"
-    >
+  return <motion.header initial="hidden" animate="visible" variants={navVariants} className="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-12">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <motion.div variants={itemVariants} className="flex items-center">
-          <span className="text-white text-2xl font-bold">heeko.</span>
+          <span className="text-white text-2xl font-bold">ZERO
+REALITY</span>
         </motion.div>
         
         <motion.div variants={itemVariants} className="flex items-center space-x-2 p-1 px-4 rounded-full bg-secondary/80 backdrop-blur-md border border-white/10">
@@ -48,21 +48,19 @@ const Navbar = () => {
           </Button>
         </motion.div>
       </div>
-    </motion.header>
-  );
+    </motion.header>;
 };
-
-const NavItem = ({ text }: { text: string }) => {
-  return (
-    <motion.a
-      href="#"
-      className="text-white/80 hover:text-white transition-colors text-sm tracking-wide"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
+const NavItem = ({
+  text
+}: {
+  text: string;
+}) => {
+  return <motion.a href="#" className="text-white/80 hover:text-white transition-colors text-sm tracking-wide" whileHover={{
+    scale: 1.05
+  }} whileTap={{
+    scale: 0.95
+  }}>
       {text}
-    </motion.a>
-  );
+    </motion.a>;
 };
-
 export default Navbar;
