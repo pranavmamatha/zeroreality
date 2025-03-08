@@ -76,9 +76,9 @@ const ServicesShowcase = () => {
             </span>
           </motion.div>
 
-          {/* Floating plus elements - made bigger */}
+          {/* Floating plus elements - repositioned to not overlap with text */}
           <motion.div
-            className="absolute right-[-5%] bottom-[-10%] z-20 w-32 h-32 md:w-48 md:h-48"
+            className="absolute right-[-20%] bottom-[-15%] z-20 w-32 h-32 md:w-48 md:h-48"
             style={{ 
               y: useTransform(scrollYProgress, [0, 1], [0, -100]),
               rotate: useTransform(scrollYProgress, [0, 1], [0, 20]) 
