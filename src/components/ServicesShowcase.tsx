@@ -20,14 +20,31 @@ const ServicesShowcase = () => {
     offset: ["start end", "end start"]
   });
 
+  // Main container animations
   const boxY = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0, 1, 1, 0.3]);
   const scale = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0.9, 1, 1, 0.95]);
   
-  // Enhanced transformations for the "WE OFFER" bubble - fixed angle with movement
-  const bubbleRotate = -5; // Fixed rotation angle
-  const bubbleY = useTransform(scrollYProgress, [0, 1], [0, -40]); // Enhanced vertical movement
-  const bubbleX = useTransform(scrollYProgress, [0, 1], [0, 20]); // Added horizontal movement
+  // Enhanced transformations for the "WE OFFER" bubble - more dynamic movement
+  const bubbleRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-8, 0, 8]); // Dynamic rotation based on scroll
+  const bubbleY = useTransform(scrollYProgress, [0, 0.5, 1], [0, -20, -40]); // Enhanced vertical movement
+  const bubbleX = useTransform(scrollYProgress, [0, 0.5, 1], [0, 10, 20]); // Enhanced horizontal movement
+  const bubbleScale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.9, 1.1, 1.2, 1]); // Scale animation
+
+  // Calculate service item animations based on scroll
+  const getServiceVariants = (index) => {
+    return {
+      hidden: { x: 50, opacity: 0 },
+      visible: (progress) => ({
+        x: 0,
+        opacity: 1,
+        transition: { 
+          delay: 0.1 * index * progress, 
+          duration: 0.5 
+        }
+      })
+    };
+  };
 
   return (
     <motion.div 
@@ -42,16 +59,18 @@ const ServicesShowcase = () => {
             className="bg-neon-green rounded-[2.5rem] p-8 pt-12 pb-12 relative z-10 max-w-xl mx-auto" 
             style={{ y: boxY }}
           >
-            <motion.div 
-              className="flex flex-col items-end text-right space-y-4" /* Increased space-y from 3 to 4 */
-            >
+            <motion.div className="flex flex-col items-center text-center space-y-4">
               {services.map((service, index) => (
                 <motion.div
                   key={index}
-                  className="font-display text-3xl md:text-4xl xl:text-5xl font-bold text-black" /* Increased font sizes further */
-                  initial={{ x: 50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.8 + (index * 0.1), duration: 0.5 }}
+                  className="font-display text-3xl md:text-4xl xl:text-5xl font-bold text-black"
+                  variants={getServiceVariants(index)}
+                  initial="hidden"
+                  custom={scrollYProgress}
+                  animate={useTransform(scrollYProgress, 
+                    [0, 0.2 + (index * 0.05)], 
+                    ["hidden", "visible"]
+                  )}
                 >
                   {service}
                 </motion.div>
@@ -59,16 +78,14 @@ const ServicesShowcase = () => {
             </motion.div>
           </motion.div>
 
-          {/* "WE OFFER" bubble - now with fixed angle and enhanced movement */}
+          {/* "WE OFFER" bubble - now with enhanced dynamic movement */}
           <motion.div
             className="absolute -left-10 top-20 md:-left-32 md:top-32 z-20 bg-black rounded-full p-6 md:p-8 border-2 border-[#9b87f5]"
-            initial={{ scale: 0, rotate: -20 }}
-            animate={{ scale: 1, rotate: bubbleRotate }} 
-            transition={{ delay: 1.2, duration: 0.5, type: "spring" }}
             style={{ 
               y: bubbleY,
               x: bubbleX,
-              rotate: bubbleRotate // Keep the angle fixed
+              rotate: bubbleRotate,
+              scale: bubbleScale
             }}
           >
             <span className="font-display text-2xl md:text-4xl font-bold text-white whitespace-nowrap">
