@@ -1,8 +1,59 @@
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
 const Hero = () => {
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+  const [showCursor, setShowCursor] = useState(true);
+
+  const serviceTexts = ["websites", "mobile applications", "ai solutions", "DESIGN"];
+  const staticText = "Ready to scale your brand? We create Awesome";
+
+  useEffect(() => {
+    // Blink the cursor
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500);
+
+    return () => clearInterval(cursorInterval);
+  }, []);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    
+    if (isTyping) {
+      // Typing effect for the current service
+      if (displayedText.length < serviceTexts[currentTextIndex].length) {
+        timeout = setTimeout(() => {
+          setDisplayedText(prev => prev + serviceTexts[currentTextIndex][prev.length]);
+        }, 100);
+      } else {
+        // Pause at the end of typing
+        timeout = setTimeout(() => {
+          setIsTyping(false);
+        }, 1500);
+      }
+    } else {
+      // Deleting effect
+      if (displayedText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayedText(prev => prev.slice(0, -1));
+        }, 50);
+      } else {
+        // Move to the next service text
+        timeout = setTimeout(() => {
+          setCurrentTextIndex((prev) => (prev + 1) % serviceTexts.length);
+          setIsTyping(true);
+        }, 500);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, currentTextIndex, isTyping, serviceTexts]);
+
   const containerVariants = {
     hidden: {
       opacity: 0
@@ -32,36 +83,6 @@ const Hero = () => {
     }
   };
   
-  const wordVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1 + 0.8,
-        duration: 0.5
-      }
-    })
-  };
-  
-  const greenTextVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 1.2,
-        duration: 0.5
-      }
-    }
-  };
-  
   const buttonVariants = {
     hidden: {
       opacity: 0,
@@ -87,8 +108,6 @@ const Hero = () => {
     }
   };
   
-  const titleWords = ['Premium', 'Design', 'via', 'simple'];
-  
   return (
     <div className="min-h-screen flex items-center justify-center relative px-6 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background/10 to-background/30" />
@@ -100,33 +119,21 @@ const Hero = () => {
         className="text-center z-10 max-w-5xl mx-auto pt-24"
       >
         <div className="flex flex-col gap-4 items-center">
-          <div className="flex flex-wrap justify-center">
-            {titleWords.map((word, i) => (
-              <motion.div 
-                key={i} 
-                custom={i} 
-                variants={wordVariants} 
-                className="mx-2 md:mx-4"
-              >
-                <span className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-foreground tracking-tight">
-                  {word}
-                </span>
-              </motion.div>
-            ))}
+          <div className="flex flex-wrap justify-center mb-4">
+            <motion.h1 
+              variants={itemVariants}
+              className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-foreground tracking-tight"
+            >
+              {staticText}
+            </motion.h1>
           </div>
           
           <motion.div 
-            variants={greenTextVariants} 
-            className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-neon-green tracking-tight"
+            variants={itemVariants}
+            className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-neon-green tracking-tight flex items-center"
           >
-            monthly subscription
-          </motion.div>
-          
-          <motion.div 
-            variants={itemVariants} 
-            className="mt-8 text-foreground/60 text-sm flex items-center justify-center"
-          >
-            ✦ PAUSE OR CANCEL ANYTIME ✦
+            <span>{displayedText}</span>
+            <span className={`ml-1 w-1 h-16 bg-neon-green inline-block ${showCursor ? 'opacity-100' : 'opacity-0'}`}></span>
           </motion.div>
           
           <motion.button 
