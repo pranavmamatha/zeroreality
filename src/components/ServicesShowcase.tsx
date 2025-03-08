@@ -43,13 +43,13 @@ const ServicesShowcase = () => {
             style={{ y: boxY }}
           >
             <motion.div 
-              className="flex flex-col items-end text-right space-y-4" /* Increased space-y from 3 to 4 */
+              className="flex flex-col items-center text-center space-y-4" /* Changed from items-end to items-center and text-right to text-center */
             >
               {services.map((service, index) => (
                 <motion.div
                   key={index}
-                  className="font-display text-3xl md:text-4xl xl:text-5xl font-bold text-black" /* Increased font sizes further */
-                  initial={{ x: 50, opacity: 0 }}
+                  className="font-display text-3xl md:text-4xl xl:text-5xl font-bold text-black" 
+                  initial={{ x: 0, opacity: 0 }} /* Changed x from 50 to 0 for center animation */
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.8 + (index * 0.1), duration: 0.5 }}
                 >
@@ -76,9 +76,9 @@ const ServicesShowcase = () => {
             </span>
           </motion.div>
 
-          {/* Floating plus elements - repositioned to not overlap with text */}
+          {/* Floating plus elements - repositioned and z-index changed to avoid overlapping text */}
           <motion.div
-            className="absolute right-[-20%] bottom-[-15%] z-20 w-32 h-32 md:w-48 md:h-48"
+            className="absolute right-[-20%] bottom-[-15%] z-0 w-32 h-32 md:w-48 md:h-48" /* Changed z-index from z-20 to z-0 */
             style={{ 
               y: useTransform(scrollYProgress, [0, 1], [0, -100]),
               rotate: useTransform(scrollYProgress, [0, 1], [0, 20]) 
