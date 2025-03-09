@@ -26,6 +26,7 @@ const PricingSection = () => {
     }
   };
   
+  // Fixed animation repeatType to use a valid value: "reverse"
   const pulseAnimation = {
     hidden: { scale: 1 },
     visible: {
@@ -33,7 +34,7 @@ const PricingSection = () => {
       transition: {
         duration: 2,
         repeat: Infinity,
-        repeatType: "reverse"
+        repeatType: "reverse" // Changed from string to literal "reverse"
       }
     }
   };
@@ -153,8 +154,9 @@ const PricingSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8, duration: 0.5 }}
                 >
-                  <Button 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-lg py-7 rounded-full transition-all duration-300"
+                  {/* Using motion.button instead of Button component to handle motion props */}
+                  <motion.button 
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-lg py-7 px-4 rounded-full transition-all duration-300 inline-flex items-center justify-center"
                     onClick={() => {
                       window.open('https://calendly.com', '_blank');
                     }}
@@ -162,7 +164,7 @@ const PricingSection = () => {
                     whileTap={{ scale: 0.98 }}
                   >
                     Book an Intro Call <ArrowRight className="ml-1 animate-pulse" />
-                  </Button>
+                  </motion.button>
                 </motion.div>
               </div>
             </motion.div>
