@@ -8,7 +8,6 @@ const TextMarquee = () => {
   const { theme } = useTheme();
   const items = ["IDEATE", "DESIGN", "EVOLVE"];
   
-  // Optimized marquee animation - simplified for better performance
   const marqueeVariants = {
     animate: {
       x: [0, -1000],
@@ -16,7 +15,7 @@ const TextMarquee = () => {
         x: {
           repeat: Infinity,
           repeatType: "loop" as const,
-          duration: 20, // Slower for better performance
+          duration: 15, // Faster animation
           ease: "linear"
         }
       }
@@ -42,8 +41,7 @@ const TextMarquee = () => {
         transition={{ duration: 1 }} 
         className="relative flex whitespace-nowrap"
       >
-        {/* Reduce number of duplicates from 4 to 2 */}
-        {[...Array(2)].map((_, i) => (
+        {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
             variants={marqueeVariants}
@@ -57,23 +55,24 @@ const TextMarquee = () => {
               <motion.div 
                 key={index} 
                 className="flex items-center"
-                // Simplified hover animation
                 whileHover={{ 
-                  scale: 1.05, 
+                  scale: 1.1, 
                   color: theme === 'dark' ? '#ADFF00' : '#7AC70C',
+                  transition: { duration: 0.2 }
                 }}
               >
                 <motion.span 
                   className={`text-5xl md:text-7xl lg:text-8xl font-display font-bold mx-4 md:mx-6 ${
                     theme === 'dark' ? 'text-white' : 'text-foreground'
                   }`}
-                  // Simplified animation with lower frequency
                   animate={{ 
-                    y: [0, -3, 0],
+                    y: [0, -5, 0],
+                    rotate: [-1, 1, -1] 
                   }}
                   transition={{ 
-                    duration: 4, 
+                    duration: 3, 
                     repeat: Infinity, 
+                    delay: index * 0.3,
                     ease: "easeInOut"
                   }}
                 >
@@ -83,13 +82,15 @@ const TextMarquee = () => {
                   className={`text-5xl md:text-7xl lg:text-8xl font-display font-bold mx-4 md:mx-6 ${
                     theme === 'dark' ? 'text-white' : 'text-foreground'
                   }`}
-                  // Simpler animation with longer duration
                   animate={{ 
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 10, 0],
                     opacity: [0.7, 1, 0.7]
                   }}
                   transition={{ 
-                    duration: 3, 
-                    repeat: Infinity
+                    duration: 2, 
+                    repeat: Infinity,
+                    delay: index * 0.5
                   }}
                 >
                   ✦
