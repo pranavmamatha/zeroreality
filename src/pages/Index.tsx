@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
@@ -5,6 +6,7 @@ import Hero from "@/components/Hero";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import TextMarquee from "@/components/TextMarquee";
 import SelectedWork from "@/components/SelectedWork";
+import ProjectShowcase from "@/components/ProjectShowcase";
 import { useTheme } from "@/components/ThemeProvider";
 
 const Index = () => {
@@ -111,6 +113,7 @@ const Index = () => {
               <ServicesShowcase />
               <TextMarquee />
               <SelectedWork />
+              <ProjectShowcase />
             </div>
           </motion.div>
         )}

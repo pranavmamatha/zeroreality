@@ -3,6 +3,15 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 const SelectedWork = () => {
+  const scrollToProjects = () => {
+    // Find the ProjectShowcase element and scroll to it
+    const projectsSection = document.getElementById('project-showcase');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    console.log('Button clicked');
+  };
+
   return (
     <div className="relative w-full bg-background flex flex-col items-center justify-center py-24 md:py-[215px]">
       <motion.div 
@@ -31,7 +40,7 @@ const SelectedWork = () => {
           className="rounded-full w-16 h-28 flex items-center justify-center border-2 border-foreground/30 bg-transparent relative cursor-pointer"
           whileHover={{ y: 5 }} 
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          onClick={() => console.log('Button clicked')}
+          onClick={scrollToProjects}
         >
           <ChevronDown className="w-6 h-6 text-[#ADFF00]" />
         </motion.div>
