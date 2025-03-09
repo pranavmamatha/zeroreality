@@ -1,5 +1,6 @@
+
 import { motion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Calendar } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 
 const PricingSection = () => {
@@ -27,7 +28,7 @@ const PricingSection = () => {
   const pulseAnimation = {
     hidden: { scale: 1 },
     visible: {
-      scale: [1, 1.02, 1] as number[],
+      scale: [1, 1.02, 1],
       transition: {
         duration: 2,
         repeat: Infinity,
@@ -96,19 +97,31 @@ const PricingSection = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={pulseAnimation}
-              className={`relative max-w-xl w-full rounded-3xl overflow-hidden ${theme === 'dark' ? 'bg-card border-2 border-primary/30' : 'bg-card/80 border-2 border-border'}`}
+              className={`relative max-w-xl w-full rounded-3xl overflow-hidden ${
+                theme === 'dark' 
+                  ? 'bg-primary/10 border-4 border-primary' 
+                  : 'bg-gradient-to-br from-white to-primary/10 border-4 border-primary/60'
+              }`}
             >
-              <div className={`relative z-10 px-8 py-10 md:px-10 md:py-12 rounded-3xl ${theme === 'dark' ? 'shadow-[0_0_25px_rgba(0,255,60,0.07)]' : 'shadow-lg'}`}>
+              <div className={`relative z-10 px-8 py-10 md:px-10 md:py-12 rounded-3xl ${
+                theme === 'dark' 
+                  ? 'shadow-[0_0_35px_rgba(0,255,60,0.15)]' 
+                  : 'shadow-xl'
+              }`}>
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
-                  className="mb-10"
+                  className="flex flex-col items-center mb-10"
                 >
-                  <h3 className="text-4xl md:text-5xl font-bold font-display mb-6">Let's work together</h3>
+                  <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                    <Calendar size={40} className="text-primary" />
+                  </div>
                   
-                  <p className="text-xl md:text-2xl text-muted-foreground">
-                    Book a call and let's discuss your project
+                  <h3 className="text-4xl md:text-5xl font-bold font-display mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">Book Your Call</h3>
+                  
+                  <p className="text-xl md:text-2xl text-muted-foreground text-center">
+                    Let's collaborate and bring your vision to life
                   </p>
                 </motion.div>
                 
@@ -142,14 +155,18 @@ const PricingSection = () => {
                   transition={{ delay: 0.8, duration: 0.5 }}
                 >
                   <motion.button 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-xl md:text-2xl py-6 px-8 rounded-full transition-colors inline-flex items-center justify-center"
+                    className={`w-full ${
+                      theme === 'dark'
+                        ? 'bg-gradient-to-r from-primary to-primary/80' 
+                        : 'bg-gradient-to-r from-primary to-primary/80'
+                    } text-primary-foreground font-bold text-xl md:text-2xl py-6 px-8 rounded-full transition-transform inline-flex items-center justify-center`}
                     onClick={() => {
                       window.open('https://calendly.com', '_blank');
                     }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Book an Intro Call <ArrowRight className="ml-2 h-6 w-6" />
+                    Schedule Now <ArrowRight className="ml-2 h-6 w-6" />
                   </motion.button>
                 </motion.div>
               </div>
