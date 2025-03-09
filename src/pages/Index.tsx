@@ -8,7 +8,6 @@ import TextMarquee from "@/components/TextMarquee";
 import WhyUs from "@/components/WhyUs";
 import SelectedWork from "@/components/SelectedWork";
 import ProjectShowcase from "@/components/ProjectShowcase";
-import ContactSection from "@/components/ContactSection";
 import { useTheme } from "@/components/ThemeProvider";
 
 const Index = () => {
@@ -117,7 +116,6 @@ const Index = () => {
               <SelectedWork />
               <ProjectShowcase />
               <WhyUs />
-              <ContactSection />
             </div>
           </motion.div>
         )}

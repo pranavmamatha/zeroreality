@@ -61,19 +61,6 @@ const Navbar = () => {
     }
   };
 
-  const handleBookCall = () => {
-    // First scroll to the contact section
-    scrollToSection('contact');
-    
-    // Then find the "Book an intro call" button and click it after a short delay
-    setTimeout(() => {
-      const bookCallButton = document.querySelector('#contact button:first-of-type');
-      if (bookCallButton && bookCallButton instanceof HTMLButtonElement) {
-        bookCallButton.click();
-      }
-    }, 800);
-  };
-
   return (
     <motion.header 
       initial="hidden" 
@@ -98,13 +85,8 @@ const Navbar = () => {
               <SheetContent className="w-[80%] sm:w-[350px]">
                 <div className="flex flex-col gap-6 mt-10">
                   <NavItem text="SERVICES" onClick={() => scrollToSection('services-showcase')} />
-                  <NavItem text="WORK" onClick={() => scrollToSection('works')} />
-                  <NavItem text="WHY US" onClick={() => scrollToSection('why-us')} />
-                  <NavItem text="CONTACT" onClick={() => scrollToSection('contact')} />
-                  <Button 
-                    className="bg-neon-green hover:bg-neon-green/90 text-black rounded-full font-medium"
-                    onClick={handleBookCall}
-                  >
+                  <NavItem text="WORK" onClick={() => scrollToSection('selected-work')} />
+                  <Button className="bg-neon-green hover:bg-neon-green/90 text-black rounded-full font-medium">
                     <Calendar className="mr-2 h-4 w-4" /> BOOK A CALL
                   </Button>
                 </div>
@@ -114,14 +96,9 @@ const Navbar = () => {
         ) : (
           <motion.div variants={itemVariants} className="flex items-center gap-8">
             <NavItem text="SERVICES" onClick={() => scrollToSection('services-showcase')} />
-            <NavItem text="WORK" onClick={() => scrollToSection('works')} />
-            <NavItem text="WHY US" onClick={() => scrollToSection('why-us')} />
-            <NavItem text="CONTACT" onClick={() => scrollToSection('contact')} />
+            <NavItem text="WORK" onClick={() => scrollToSection('selected-work')} />
             <ThemeToggle />
-            <Button 
-              className="bg-neon-green hover:bg-neon-green/90 text-black rounded-full font-medium"
-              onClick={handleBookCall}
-            >
+            <Button className="bg-neon-green hover:bg-neon-green/90 text-black rounded-full font-medium">
               <Calendar className="mr-2 h-4 w-4" /> BOOK A CALL
             </Button>
           </motion.div>
