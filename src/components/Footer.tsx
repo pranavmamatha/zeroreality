@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className="bg-background px-6 py-16 md:py-24">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 mb-16">
           {/* Follow us section */}
           <div className="md:col-span-4">
             <h3 className="text-foreground/60 text-lg mb-6">Follow us</h3>
@@ -74,7 +74,7 @@ const Footer = () => {
         </div>
         
         {/* Bottom copyright section */}
-        <div className="mt-16 md:mt-36 flex flex-col md:flex-row justify-between items-start">
+        <div className="flex flex-col md:flex-row justify-between items-start border-t border-foreground/10 pt-8">
           <div className="mb-8 md:mb-0">
             <p className="text-4xl md:text-6xl lg:text-7xl font-semibold">
               <span className="inline-block mr-3">©</span>
