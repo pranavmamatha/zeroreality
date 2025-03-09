@@ -8,22 +8,22 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --foreground: 0 0% 5%;  /* Darker text in light mode (changed from 10% to 5%) */
 
     --card: 0 0% 98%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 0 0% 5%;  /* Darker text for cards too */
 
     --popover: 0 0% 98%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 0 0% 5%;  /* Consistent darker text */
 
     --primary: 135 100% 43%;
     --primary-foreground: 0 0% 0%;
 
     --secondary: 0 0% 95%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary-foreground: 0 0% 5%;  /* Darker text for secondary elements */
 
     --muted: 0 0% 90%;
-    --muted-foreground: 0 0% 40%;
+    --muted-foreground: 0 0% 35%;  /* Slightly darker muted text */
 
     --accent: 135 100% 43%;
     --accent-foreground: 0 0% 0%;
