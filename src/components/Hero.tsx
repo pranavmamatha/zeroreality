@@ -109,18 +109,18 @@ const Hero = () => {
 
   const floatingVariants = {
     initial: { y: 0, opacity: 0.3 },
-    animate: (i: number) => ({
+    animate: {
       y: [0, -15, 0, -5, 0],
       opacity: [0.3, 0.7, 0.5, 0.8, 0.3],
       rotate: [0, 5, 0, -5, 0],
       transition: {
-        delay: i.delay,
-        duration: i.duration,
+        delay: 0,
+        duration: 4,
         repeat: Infinity,
-        repeatType: "loop",
+        repeatType: "loop" as const,
         ease: "easeInOut"
       }
-    })
+    }
   };
   
   const scrollToWork = () => {
@@ -150,7 +150,10 @@ const Hero = () => {
           variants={floatingVariants}
           initial="initial"
           animate="animate"
-          custom={element}
+          custom={{
+            delay: element.delay,
+            duration: element.duration
+          }}
         />
       ))}
       
