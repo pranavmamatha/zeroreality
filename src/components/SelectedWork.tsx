@@ -24,8 +24,8 @@ const SelectedWork = () => {
     }} viewport={{
       once: true
     }} className="text-center">
-        <h2 className="text-6xl md:text-7xl lg:text-8xl font-display font-medium text-[#9b87f5] dark:text-[#9b87f5] tracking-tight mb-4">our</h2>
-        <h2 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold uppercase tracking-tight">WORKS</h2>
+        <h2 className="text-6xl md:text-7xl lg:text-8xl font-display font-medium text-[#9b87f5] dark:text-[#9b87f5] tracking-tight mb-4">Our</h2>
+        <h2 className="text-6xl md:text-7xl font-display font-bold uppercase tracking-tight lg:text-9xl">WORKS</h2>
       </motion.div>
       
       <motion.div initial={{
