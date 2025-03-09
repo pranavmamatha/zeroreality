@@ -26,7 +26,7 @@ const ServicesShowcase = () => {
   style={{
     opacity,
     scale
-  }} className="relative mt-16 md:mt-32 pb-32 pt-32 md:pt-36 py-[95px]">
+  }} className="relative mt-16 md:mt-32 pb-32 pt-32 md:pt-36 py-[95px] my-[140px]">
       {/* Empty div for scroll target positioning - helps ensure proper scroll positioning */}
       <div id="services-scroll-target" className="absolute top-[-100px]"></div>
       
