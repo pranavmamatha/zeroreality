@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
@@ -15,9 +14,8 @@ const Hero = () => {
     
     const typeWriter = () => {
       if (isDeleting) {
-        // Deleting text
         setDisplayText(text.substring(0, displayText.length - 1));
-        setTypingSpeed(50); // faster when deleting
+        setTypingSpeed(50);
         
         if (displayText === "") {
           setIsDeleting(false);
@@ -25,11 +23,9 @@ const Hero = () => {
           setTypingSpeed(150);
         }
       } else {
-        // Typing text
         setDisplayText(text.substring(0, displayText.length + 1));
         
         if (displayText === text) {
-          // Pause at the end before deleting
           setTypingSpeed(2000);
           setIsDeleting(true);
         }
@@ -41,56 +37,41 @@ const Hero = () => {
   }, [displayText, isDeleting, currentTextIndex, dynamicTexts, typingSpeed]);
   
   const containerVariants = {
-    hidden: {
-      opacity: 0
-    },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.6
+        delayChildren: 0.3
       }
     }
   };
   
   const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         type: "spring",
-        stiffness: 100,
-        damping: 20
+        stiffness: 70,
+        damping: 15
       }
     }
   };
   
   const buttonVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 0.8
-    },
+    hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        delay: 1.6,
-        duration: 0.5,
-        type: "spring",
-        stiffness: 200
+        delay: 0.8,
+        duration: 0.4
       }
     },
     hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.2,
-        type: "spring",
-        stiffness: 400
-      }
+      scale: 1.03,
     }
   };
   
@@ -129,13 +110,13 @@ const Hero = () => {
           <motion.button 
             variants={buttonVariants} 
             whileHover="hover" 
-            whileTap={{ scale: 0.95 }} 
+            whileTap={{ scale: 0.98 }} 
             className="mt-16 relative flex items-center justify-center gap-4 bg-transparent border border-foreground/20 text-foreground py-4 px-10 rounded-full overflow-hidden group"
           >
             <span className="z-10 font-medium text-xl">View Our Work</span>
             <motion.div 
               className="z-10 bg-neon-green rounded-full p-2" 
-              whileHover={{ rotate: 45, backgroundColor: "#8BFF00" }}
+              whileHover={{ rotate: 15 }}
             >
               <ArrowDown size={20} className="text-black" />
             </motion.div>

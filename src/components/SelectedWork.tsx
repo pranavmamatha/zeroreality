@@ -11,33 +11,29 @@ const SelectedWork = () => {
         behavior: 'smooth'
       });
     }
-    console.log('Button clicked');
   };
 
-  // New enhanced animations
+  // Simplified animations
   const titleVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.8,
-        delay: 0.1,
+        duration: 0.6,
         ease: "easeOut" 
       }
     }
   };
 
   const accentVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, scale: 0.9 },
     visible: { 
       opacity: 1, 
       scale: 1,
       transition: {
-        duration: 0.6,
-        delay: 0.4,
-        type: "spring",
-        stiffness: 200
+        duration: 0.5,
+        delay: 0.2
       }
     }
   };
@@ -48,19 +44,13 @@ const SelectedWork = () => {
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.6,
-        delay: 0.6,
-        type: "spring"
+        duration: 0.5,
+        delay: 0.3
       }
     },
     hover: { 
-      y: 5, 
-      borderColor: "#9b87f5",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10
-      }
+      y: 3,
+      borderColor: "#9b87f5"
     }
   };
 
@@ -69,21 +59,21 @@ const SelectedWork = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.3
+        staggerChildren: 0.05, // Reduced stagger delay
+        delayChildren: 0.2
       }
     }
   };
 
   const letterVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 10, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 200,
-        damping: 15
+        stiffness: 100,
+        damping: 10
       }
     }
   };
@@ -98,17 +88,13 @@ const SelectedWork = () => {
         variants={titleVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.6 }} // Increased threshold for earlier animation
         className="text-center"
       >
         <motion.h2 
           variants={accentVariants}
           className="text-6xl md:text-7xl lg:text-8xl font-display font-medium text-[#9b87f5] dark:text-[#9b87f5] tracking-tight mb-4"
-          whileHover={{ 
-            scale: 1.05, 
-            color: "#ADFF00",
-            transition: { duration: 0.3 }
-          }}
+          whileHover={{ scale: 1.03 }}
         >
           Our
         </motion.h2>
@@ -118,7 +104,7 @@ const SelectedWork = () => {
           variants={letterContainerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.6 }}
         >
           <div className="flex justify-center">
             {worksLetters.map((letter, index) => (
@@ -127,10 +113,8 @@ const SelectedWork = () => {
                 variants={letterVariants}
                 className="text-6xl md:text-7xl font-display font-bold uppercase tracking-tight lg:text-9xl inline-block"
                 whileHover={{ 
-                  scale: 1.1, 
-                  color: "#ADFF00", 
-                  rotate: [-5, 5, 0],
-                  transition: { duration: 0.3 } 
+                  scale: 1.05, 
+                  color: "#ADFF00"
                 }}
               >
                 {letter}
@@ -144,21 +128,21 @@ const SelectedWork = () => {
         variants={buttonVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.8 }}
         className="mt-12 md:mt-16"
       >
         <motion.div 
           className="rounded-full w-16 h-28 flex items-center justify-center border-2 border-foreground/30 bg-transparent relative cursor-pointer" 
           variants={buttonVariants}
           whileHover="hover"
-          whileTap={{ scale: 0.95 }}
+          whileTap={{ scale: 0.98 }}
           onClick={scrollToProjects}
         >
           <motion.div
             animate={{ 
-              y: [0, 5, 0],
+              y: [0, 4, 0],
               transition: { 
-                duration: 1.5, 
+                duration: 2, 
                 repeat: Infinity,
                 ease: "easeInOut" 
               }
