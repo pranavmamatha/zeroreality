@@ -1,7 +1,5 @@
-
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-
 const ServicesShowcase = () => {
   const services = ["UX & Strategy", "Concepting", "UI Design", "Design Systems", "Brand Identity", "Style Guides", "Websites", "Prototyping"];
   const containerRef = useRef(null);
@@ -34,11 +32,11 @@ const ServicesShowcase = () => {
       
       <div className="flex justify-center items-center">
         <div className="relative w-full max-w-xl"> 
-          {/* Green rectangle background - added more padding to the left to move text to the right */}
+          {/* Green rectangle background */}
           <motion.div className="bg-neon-green rounded-[2.5rem] p-8 pt-12 pb-12 relative z-10 max-w-xl mx-auto" style={{
           y: boxY
         }}>
-            <motion.div className="flex flex-col items-center text-center space-y-4 pl-10">
+            <motion.div className="flex flex-col items-center text-center space-y-4">
               {services.map((service, index) => <motion.div key={index} className="font-display text-3xl md:text-4xl xl:text-5xl font-bold text-black" initial={{
               x: 50,
               opacity: 0
@@ -57,13 +55,12 @@ const ServicesShowcase = () => {
             </motion.div>
           </motion.div>
 
-          {/* "WE OFFER" bubble with oval shape */}
+          {/* "WE OFFER" bubble - now with enhanced dynamic movement */}
           <motion.div className="absolute -left-10 top-20 md:-left-32 md:top-32 z-20 bg-black rounded-full p-6 md:p-8 border-2 border-[#9b87f5]" style={{
           y: bubbleY,
           x: bubbleX,
           rotate: bubbleRotate,
-          scale: bubbleScale,
-          borderRadius: "40px"
+          scale: bubbleScale
         }}>
             <span className="font-display text-2xl md:text-4xl font-bold text-white whitespace-nowrap">
               WE OFFER 🏄
@@ -73,5 +70,4 @@ const ServicesShowcase = () => {
       </div>
     </motion.div>;
 };
-
 export default ServicesShowcase;
