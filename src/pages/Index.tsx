@@ -68,8 +68,9 @@ const Index = () => {
               </svg>
             </motion.div>
             
+            {/* Moved this purple square to the bottom left of the screen */}
             <motion.div 
-              className="fixed right-[15%] top-[10%] w-20 h-20 md:w-32 md:h-32 z-0 pointer-events-none"
+              className="fixed left-[5%] bottom-[15%] w-20 h-20 md:w-32 md:h-32 z-0 pointer-events-none"
               style={{ y: translateY2, rotate: rotate2 }}
             >
               <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
