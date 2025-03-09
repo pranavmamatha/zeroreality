@@ -35,9 +35,12 @@ const ServicesShowcase = () => {
     <motion.div 
       id="services-showcase"
       ref={containerRef}
-      className="relative mt-16 md:mt-32 pb-32 pt-24" // Added pt-24 to provide space at the top for better scrolling with fixed header
+      className="relative mt-16 md:mt-32 pb-32 pt-32 md:pt-36" // Increased top padding to ensure content is visible below navbar
       style={{ opacity, scale }}
     >
+      {/* Empty div for scroll target positioning - helps ensure proper scroll positioning */}
+      <div id="services-scroll-target" className="absolute top-[-100px]"></div>
+      
       <div className="flex justify-center items-center">
         <div className="relative w-full max-w-xl"> 
           {/* Green rectangle background */}

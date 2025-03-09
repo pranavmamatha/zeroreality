@@ -45,12 +45,15 @@ const Navbar = () => {
       const navbar = document.querySelector('header');
       const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80;
       
+      // Set different offset for services section
+      const offset = id === 'services-showcase' ? navbarHeight + 40 : navbarHeight + 20;
+      
       // Get the top position of the target section
       const sectionTop = section.getBoundingClientRect().top + window.scrollY;
       
       // Scroll with offset
       window.scrollTo({
-        top: sectionTop - navbarHeight - 20, // Added extra 20px for better spacing
+        top: sectionTop - offset,
         behavior: 'smooth'
       });
       
