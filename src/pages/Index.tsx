@@ -1,9 +1,11 @@
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import TextMarquee from "@/components/TextMarquee";
+import SelectedWork from "@/components/SelectedWork";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -73,6 +75,7 @@ const Index = () => {
               <Hero />
               <ServicesShowcase />
               <TextMarquee />
+              <SelectedWork />
             </div>
           </motion.div>
         )}
