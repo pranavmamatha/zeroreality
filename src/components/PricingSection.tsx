@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
@@ -97,7 +96,7 @@ const PricingSection = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={pulseAnimation}
-              className={`relative max-w-xl w-full rounded-3xl overflow-hidden ${theme === 'dark' ? 'bg-card border border-primary/20' : 'bg-card/80 border border-border'}`}
+              className={`relative max-w-xl w-full rounded-3xl overflow-hidden ${theme === 'dark' ? 'bg-card border-2 border-primary/30' : 'bg-card/80 border-2 border-border'}`}
             >
               <div className={`relative z-10 px-8 py-10 md:px-10 md:py-12 rounded-3xl ${theme === 'dark' ? 'shadow-[0_0_25px_rgba(0,255,60,0.07)]' : 'shadow-lg'}`}>
                 <motion.div
@@ -106,10 +105,10 @@ const PricingSection = () => {
                   transition={{ delay: 0.3, duration: 0.5 }}
                   className="mb-10"
                 >
-                  <h3 className="text-4xl md:text-5xl font-bold font-display mb-6">Premium Design Service</h3>
+                  <h3 className="text-4xl md:text-5xl font-bold font-display mb-6">Let's work together</h3>
                   
                   <p className="text-xl md:text-2xl text-muted-foreground">
-                    Ideal for businesses looking for expert design solutions with dedicated support.
+                    Book a call and let's discuss your project
                   </p>
                 </motion.div>
                 
