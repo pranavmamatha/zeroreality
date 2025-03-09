@@ -26,6 +26,27 @@ const ServicesShowcase = () => {
   const bubbleX = useTransform(scrollYProgress, [0, 0.5, 1], [0, 10, 20]); // Enhanced horizontal movement
   const bubbleScale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.9, 1.1, 1.2, 1]); // Scale animation
 
+  // Service item animations
+  const serviceVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: 0.1 * i,
+        duration: 0.5,
+        type: "spring",
+        stiffness: 200,
+        damping: 20
+      }
+    }),
+    hover: {
+      scale: 1.05,
+      color: "#8BFF00",
+      transition: { duration: 0.2 }
+    }
+  };
+
   // Mobile version
   if (isMobile) {
     return (
@@ -48,10 +69,18 @@ const ServicesShowcase = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <span className="font-display text-xl font-bold text-white whitespace-nowrap">
+            <motion.span 
+              className="font-display text-xl font-bold text-white whitespace-nowrap"
+              animate={{ 
+                scale: [1, 1.05, 1],
+                transition: { duration: 2, repeat: Infinity }
+              }}
+            >
               WE OFFER 🏄
-            </span>
+            </motion.span>
           </motion.div>
 
           {/* Green rectangle with services */}
@@ -60,6 +89,10 @@ const ServicesShowcase = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ 
+              boxShadow: "0 10px 25px rgba(173, 255, 0, 0.3)",
+              transition: { duration: 0.3 }
+            }}
           >
             <motion.div className="flex flex-col items-center text-center space-y-5">
               {services.map((service, index) => (
@@ -69,7 +102,9 @@ const ServicesShowcase = () => {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false, amount: 0.1 }}
-                  transition={{ delay: 0.1 * index, duration: 0.4 }}
+                  transition={{ delay: 0.1 * index, duration: 0.4, type: "spring" }}
+                  whileHover={{ scale: 1.05, x: 5 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {service}
                 </motion.div>
@@ -81,7 +116,7 @@ const ServicesShowcase = () => {
     );
   }
 
-  // Desktop version (original)
+  // Desktop version (enhanced)
   return (
     <motion.div 
       id="services-showcase" 
@@ -97,20 +132,30 @@ const ServicesShowcase = () => {
       
       <div className="flex justify-center items-center">
         <div className="relative w-full max-w-xl"> 
-          {/* Green rectangle background */}
+          {/* Green rectangle background with enhanced animations */}
           <motion.div 
             className="bg-neon-green rounded-[2.5rem] p-8 pt-12 pb-12 relative z-10 max-w-xl mx-auto" 
             style={{ y: boxY }}
+            whileHover={{ 
+              boxShadow: "0 20px 40px rgba(173, 255, 0, 0.3)",
+              transition: { duration: 0.4 }
+            }}
+            animate={{ 
+              rotateZ: [0, 0.5, -0.5, 0],
+              transition: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+            }}
           >
             <motion.div className="flex flex-col items-right text-right space-y-4">
               {services.map((service, index) => (
                 <motion.div 
                   key={index} 
                   className="font-display text-3xl md:text-4xl xl:text-5xl font-bold text-black" 
-                  initial={{ x: 50, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
+                  custom={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
                   viewport={{ once: false, amount: 0.1 }}
-                  transition={{ delay: 0.1 * index, duration: 0.5 }}
+                  variants={serviceVariants}
                 >
                   {service}
                 </motion.div>
@@ -127,10 +172,32 @@ const ServicesShowcase = () => {
               rotate: bubbleRotate,
               scale: bubbleScale
             }}
+            whileHover={{ 
+              scale: 1.1, 
+              borderColor: "#ADFF00", 
+              boxShadow: "0 5px 15px rgba(155, 135, 245, 0.4)" 
+            }}
+            whileTap={{ scale: 0.95 }}
           >
-            <span className="font-display text-2xl md:text-4xl font-bold text-white whitespace-nowrap">
-              WE OFFER 🏄
-            </span>
+            <motion.span 
+              className="font-display text-2xl md:text-4xl font-bold text-white whitespace-nowrap"
+              animate={{
+                scale: [1, 1.05, 1],
+                transition: { duration: 3, repeat: Infinity }
+              }}
+            >
+              WE OFFER 
+              <motion.span 
+                animate={{
+                  rotate: [0, 15, 0, -15, 0],
+                  x: [0, 2, 0, -2, 0],
+                  transition: { duration: 2, repeat: Infinity }
+                }}
+                className="inline-block ml-2"
+              >
+                🏄
+              </motion.span>
+            </motion.span>
           </motion.div>
         </div>
       </div>

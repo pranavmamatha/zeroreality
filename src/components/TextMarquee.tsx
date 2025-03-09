@@ -15,7 +15,7 @@ const TextMarquee = () => {
         x: {
           repeat: Infinity,
           repeatType: "loop" as const,
-          duration: 20,
+          duration: 15, // Faster animation
           ease: "linear"
         }
       }
@@ -35,7 +35,12 @@ const TextMarquee = () => {
         }`} 
       />
       
-      <div className="relative flex whitespace-nowrap">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }} 
+        className="relative flex whitespace-nowrap"
+      >
         {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
@@ -47,22 +52,54 @@ const TextMarquee = () => {
             }}
           >
             {items.map((item, index) => (
-              <div key={index} className="flex items-center">
-                <span className={`text-5xl md:text-7xl lg:text-8xl font-display font-bold mx-4 md:mx-6 ${
-                  theme === 'dark' ? 'text-white' : 'text-foreground'
-                }`}>
+              <motion.div 
+                key={index} 
+                className="flex items-center"
+                whileHover={{ 
+                  scale: 1.1, 
+                  color: theme === 'dark' ? '#ADFF00' : '#7AC70C',
+                  transition: { duration: 0.2 }
+                }}
+              >
+                <motion.span 
+                  className={`text-5xl md:text-7xl lg:text-8xl font-display font-bold mx-4 md:mx-6 ${
+                    theme === 'dark' ? 'text-white' : 'text-foreground'
+                  }`}
+                  animate={{ 
+                    y: [0, -5, 0],
+                    rotate: [-1, 1, -1] 
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity, 
+                    delay: index * 0.3,
+                    ease: "easeInOut"
+                  }}
+                >
                   {item}
-                </span>
-                <span className={`text-5xl md:text-7xl lg:text-8xl font-display font-bold mx-4 md:mx-6 ${
-                  theme === 'dark' ? 'text-white' : 'text-foreground'
-                }`}>
+                </motion.span>
+                <motion.span 
+                  className={`text-5xl md:text-7xl lg:text-8xl font-display font-bold mx-4 md:mx-6 ${
+                    theme === 'dark' ? 'text-white' : 'text-foreground'
+                  }`}
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 10, 0],
+                    opacity: [0.7, 1, 0.7]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity,
+                    delay: index * 0.5
+                  }}
+                >
                   ✦
-                </span>
-              </div>
+                </motion.span>
+              </motion.div>
             ))}
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
