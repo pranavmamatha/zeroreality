@@ -50,7 +50,7 @@ const ProjectShowcase = () => {
   return (
     <div id="project-showcase" className="w-full bg-background py-16 md:py-24 px-4 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           <ProjectCard
             title="SWAPR DAPP"
             description="Your DeFi power tool."
@@ -65,6 +65,24 @@ const ProjectShowcase = () => {
             image="/placeholder.svg"
             tags={["DESIGN SYSTEM", "BRANDING"]} 
             bgColor="bg-blue-600"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <ProjectCard
+            title="STACKLY"
+            description="Stack Crypto over time"
+            image="/lovable-uploads/e5ae7bdd-475b-45fd-b95e-fce8ddce3c5a.png"
+            tags={["DESIGN SYSTEM", "UI", "BRANDING"]} 
+            bgColor="bg-green-700"
+          />
+          
+          <ProjectCard
+            title="CHIPP.AI"
+            description="Build, share and sell your AI tools."
+            image="/lovable-uploads/e5ae7bdd-475b-45fd-b95e-fce8ddce3c5a.png"
+            tags={["DESIGN SYSTEM", "UI"]} 
+            bgColor="bg-yellow-400"
           />
         </div>
       </div>
