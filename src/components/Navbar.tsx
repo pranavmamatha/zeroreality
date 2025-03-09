@@ -1,16 +1,16 @@
 
 import { motion } from "framer-motion";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { Calendar, Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { ThemeToggle } from "./ThemeToggle";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const isMobile = useIsMobile();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  
   const navVariants = {
     hidden: {
       opacity: 0,
@@ -38,6 +38,13 @@ const Navbar = () => {
     }
   };
 
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.header 
       initial="hidden" 
@@ -61,11 +68,10 @@ const Navbar = () => {
               </SheetTrigger>
               <SheetContent className="w-[80%] sm:w-[350px]">
                 <div className="flex flex-col gap-6 mt-10">
-                  <NavItem text="SERVICES" />
-                  <NavItem text="WORK" />
-                  <NavItem text="PRICING" />
+                  <NavItem text="SERVICES" onClick={() => scrollToSection('services-showcase')} />
+                  <NavItem text="WORK" onClick={() => scrollToSection('project-showcase')} />
                   <Button className="bg-neon-green hover:bg-neon-green/90 text-black rounded-full font-medium">
-                    <span className="mr-2">→</span> START A PROJECT
+                    <Calendar className="mr-2 h-4 w-4" /> BOOK A CALL
                   </Button>
                 </div>
               </SheetContent>
@@ -73,12 +79,11 @@ const Navbar = () => {
           </div>
         ) : (
           <motion.div variants={itemVariants} className="flex items-center gap-8">
-            <NavItem text="SERVICES" />
-            <NavItem text="WORK" />
-            <NavItem text="PRICING" />
+            <NavItem text="SERVICES" onClick={() => scrollToSection('services-showcase')} />
+            <NavItem text="WORK" onClick={() => scrollToSection('project-showcase')} />
             <ThemeToggle />
             <Button className="bg-neon-green hover:bg-neon-green/90 text-black rounded-full font-medium">
-              <span className="mr-2">→</span> START A PROJECT
+              <Calendar className="mr-2 h-4 w-4" /> BOOK A CALL
             </Button>
           </motion.div>
         )}
@@ -88,14 +93,16 @@ const Navbar = () => {
 };
 
 const NavItem = ({
-  text
+  text,
+  onClick
 }: {
   text: string;
+  onClick?: () => void;
 }) => {
   return (
     <motion.a 
-      href="#" 
-      className="text-foreground/80 hover:text-foreground transition-colors text-sm tracking-wide" 
+      onClick={onClick}
+      className="text-foreground/80 hover:text-foreground transition-colors text-sm tracking-wide cursor-pointer" 
       whileHover={{
         scale: 1.05
       }} 
