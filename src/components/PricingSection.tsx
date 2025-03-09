@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 const PricingSection = () => {
   return (
@@ -20,119 +20,68 @@ const PricingSection = () => {
           viewport={{ once: true }}
           className="text-4xl md:text-6xl font-display font-bold mb-6 text-center"
         >
-          Invest in a design that propels
+          Let's work together
         </motion.h1>
         
-        <motion.h1 
+        <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-display font-bold mb-16 text-center"
+          className="text-2xl md:text-3xl font-display font-medium mb-16 text-center text-muted-foreground"
         >
-          your business forward
-        </motion.h1>
+          Book a call and let's discuss your project needs
+        </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Standard Plan */}
+        <div className="flex justify-center">
+          {/* Single Plan Box */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="rounded-3xl bg-black border-2 border-neon-green p-8 relative overflow-hidden"
+            className="rounded-3xl max-w-md w-full dark:bg-black bg-card border-2 border-primary p-8 relative overflow-hidden shadow-lg"
           >
-            <h3 className="text-3xl font-bold mb-4 text-neon-green">Standard</h3>
-            <p className="text-white/80 mb-6">
-              Ideal for a trial, a few tasks, or small projects, offering maximum flexibility.
+            <h3 className="text-3xl font-bold mb-4 text-primary">Premium Design Service</h3>
+            <p className="dark:text-white/80 text-foreground/80 mb-8">
+              Ideal for businesses looking for expert design solutions with maximum flexibility and dedicated support.
             </p>
             
-            <div className="mb-6">
-              <span className="text-5xl font-bold">$4,999</span>
-              <span className="text-xl text-white/60">/m</span>
-            </div>
-            <p className="mb-8 text-white/60">Pause or cancel any time</p>
-            
-            <div className="space-y-4 mb-8">
+            <div className="space-y-4 mb-10">
               <div className="flex items-start">
-                <div className="text-neon-green mr-2 mt-1">✓</div>
-                <div className="text-white/80">Dedicated senior designer</div>
+                <div className="text-primary mr-3 mt-1">
+                  <Check size={18} className="text-primary" />
+                </div>
+                <div className="dark:text-white/80 text-foreground/80">Dedicated senior designer</div>
               </div>
               <div className="flex items-start">
-                <div className="text-neon-green mr-2 mt-1">✓</div>
-                <div className="text-white/80">3 hours of focused work daily</div>
+                <div className="text-primary mr-3 mt-1">
+                  <Check size={18} className="text-primary" />
+                </div>
+                <div className="dark:text-white/80 text-foreground/80">Daily focused work on your project</div>
               </div>
               <div className="flex items-start">
-                <div className="text-neon-green mr-2 mt-1">✓</div>
-                <div className="text-white/80">Weekly update calls</div>
+                <div className="text-primary mr-3 mt-1">
+                  <Check size={18} className="text-primary" />
+                </div>
+                <div className="dark:text-white/80 text-foreground/80">Regular update calls</div>
               </div>
               <div className="flex items-start">
-                <div className="text-neon-green mr-2 mt-1">✓</div>
-                <div className="text-white/80">Async comms</div>
+                <div className="text-primary mr-3 mt-1">
+                  <Check size={18} className="text-primary" />
+                </div>
+                <div className="dark:text-white/80 text-foreground/80">1:1 Async communication via Slack</div>
               </div>
               <div className="flex items-start">
-                <div className="text-neon-green mr-2 mt-1">✓</div>
-                <div className="text-white/80">Pause or cancel anytime</div>
+                <div className="text-primary mr-3 mt-1">
+                  <Check size={18} className="text-primary" />
+                </div>
+                <div className="dark:text-white/80 text-foreground/80">Flexible engagement terms</div>
               </div>
             </div>
             
             <Button 
-              className="w-full bg-neon-green hover:bg-neon-green/90 text-black font-medium text-lg py-6 flex items-center justify-center gap-2"
-              onClick={() => {
-                const bookingSection = document.getElementById('booking-section');
-                if (bookingSection) {
-                  bookingSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            >
-              Book an Intro Call <ArrowRight className="ml-1" />
-            </Button>
-          </motion.div>
-          
-          {/* Project-Based Plan */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="rounded-3xl bg-black border-2 border-[#9b87f5] p-8 relative overflow-hidden"
-          >
-            <h3 className="text-3xl font-bold mb-4 text-[#9b87f5]">Project-Based</h3>
-            <p className="text-white/80 mb-6">
-              Ideal for businesses or individuals with clear, specific needs.
-            </p>
-            
-            <div className="mb-6">
-              <span className="text-5xl font-bold">$7,999</span>
-              <span className="text-xl text-white/60">/m</span>
-            </div>
-            <p className="mb-8 text-white/60">Pause or cancel any time</p>
-            
-            <div className="space-y-4 mb-8">
-              <div className="flex items-start">
-                <div className="text-[#9b87f5] mr-2 mt-1">✓</div>
-                <div className="text-white/80">Dedicated senior designer</div>
-              </div>
-              <div className="flex items-start">
-                <div className="text-[#9b87f5] mr-2 mt-1">✓</div>
-                <div className="text-white/80">6 hours of focused work daily</div>
-              </div>
-              <div className="flex items-start">
-                <div className="text-[#9b87f5] mr-2 mt-1">✓</div>
-                <div className="text-white/80">Bi-weekly update calls</div>
-              </div>
-              <div className="flex items-start">
-                <div className="text-[#9b87f5] mr-2 mt-1">✓</div>
-                <div className="text-white/80">1:1 Async comms via Slack</div>
-              </div>
-              <div className="flex items-start">
-                <div className="text-[#9b87f5] mr-2 mt-1">✓</div>
-                <div className="text-white/80">Pause or cancel anytime</div>
-              </div>
-            </div>
-            
-            <Button 
-              className="w-full bg-[#9b87f5] hover:bg-[#9b87f5]/90 text-black font-medium text-lg py-6 flex items-center justify-center gap-2"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-lg py-6 flex items-center justify-center gap-2"
               onClick={() => {
                 const bookingSection = document.getElementById('booking-section');
                 if (bookingSection) {
