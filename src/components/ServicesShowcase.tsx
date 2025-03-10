@@ -178,7 +178,7 @@ const ServicesShowcase = () => {
             }}
             whileHover={{ 
               scale: 1.1, 
-              borderColor: "#ADFF00", 
+              borderColor: "#8BFF00", 
               boxShadow: "0 5px 15px rgba(155, 135, 245, 0.4)" 
             }}
             whileTap={{ scale: 0.95 }}

@@ -67,7 +67,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				'neon-green': '#ADFF00',
+				'neon-green': '#8BFF00',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

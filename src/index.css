@@ -87,7 +87,7 @@
   }
 
   .text-gradient-green {
-    background: linear-gradient(to right, white, #ADFF00);
+    background: linear-gradient(to right, white, #8BFF00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

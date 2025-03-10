@@ -95,7 +95,7 @@ const SelectedWork = () => {
   const worksLetters = worksText.split("");
 
   // Hover color that works in both light and dark themes
-  const hoverColor = "#ADFF00"; // Bright green that's visible in both themes
+  const hoverColor = "#8BFF00"; // Bright green that's visible in both themes
 
   return (
     <div id="works" className="relative w-full min-h-[80vh] bg-background flex flex-col items-center justify-center">
@@ -176,7 +176,7 @@ const SelectedWork = () => {
               }
             }}
           >
-            <ChevronDown className="w-6 h-6 text-[#ADFF00]" />
+            <ChevronDown className="w-6 h-6 text-[#8BFF00]" />
           </motion.div>
         </motion.div>
       </motion.div>
