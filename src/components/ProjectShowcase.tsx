@@ -54,7 +54,7 @@ const ProjectShowcase = () => {
           <ProjectCard
             title="SWAPR DAPP"
             description="Your DeFi power tool."
-            image="/lovable-uploads/6f4397cd-c498-4af7-8b06-ea27b6c9f424.png"
+            image="/placeholder.svg"
             tags={["DESIGN SYSTEM", "UI", "BRANDING"]} 
             bgColor="bg-purple-900"
           />
@@ -72,7 +72,7 @@ const ProjectShowcase = () => {
           <ProjectCard
             title="STACKLY"
             description="Stack Crypto over time"
-            image="/lovable-uploads/e5ae7bdd-475b-45fd-b95e-fce8ddce3c5a.png"
+            image="/placeholder.svg"
             tags={["DESIGN SYSTEM", "UI", "BRANDING"]} 
             bgColor="bg-green-700"
           />
@@ -80,7 +80,7 @@ const ProjectShowcase = () => {
           <ProjectCard
             title="CHIPP.AI"
             description="Build, share and sell your AI tools."
-            image="/lovable-uploads/e5ae7bdd-475b-45fd-b95e-fce8ddce3c5a.png"
+            image="/placeholder.svg"
             tags={["DESIGN SYSTEM", "UI"]} 
             bgColor="bg-yellow-400"
           />

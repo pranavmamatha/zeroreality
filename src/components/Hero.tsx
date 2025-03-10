@@ -91,6 +91,29 @@ const Hero = () => {
     }
   };
   
+  const scrollToWorks = () => {
+    const worksSection = document.getElementById('works');
+    if (worksSection) {
+      // Get the height of the navbar to offset the scroll position
+      const navbar = document.querySelector('header');
+      const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80;
+      
+      // Get the section height to center it
+      const sectionHeight = worksSection.getBoundingClientRect().height;
+      const windowHeight = window.innerHeight;
+      const offset = Math.max((windowHeight - sectionHeight) / 2, navbarHeight);
+      
+      // Calculate the final scroll position
+      const sectionTop = worksSection.getBoundingClientRect().top + window.scrollY;
+      
+      // Scroll with offset
+      window.scrollTo({
+        top: sectionTop - offset,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
   return (
     <div className="min-h-screen flex items-center justify-center relative px-6 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background/10 to-background/30" />
@@ -148,7 +171,8 @@ const Hero = () => {
             variants={buttonVariants} 
             whileHover="hover" 
             whileTap={{ scale: 0.95 }} 
-            className="mt-16 relative flex items-center justify-center gap-4 bg-transparent border border-foreground/20 text-foreground py-4 px-10 rounded-full overflow-hidden group"
+            onClick={scrollToWorks}
+            className="mt-16 relative flex items-center justify-center gap-4 bg-transparent border border-foreground/20 text-foreground py-4 px-10 rounded-full overflow-hidden group cursor-pointer"
           >
             <span className="z-10 font-medium text-xl" style={{ fontFamily: "'Arial', sans-serif" }}>View Our Work</span>
             <motion.div 
