@@ -7,9 +7,9 @@ const Footer = () => {
   const isMobile = useIsMobile();
 
   return (
-    <footer id="footer" className="bg-background px-6 py-12 md:py-16">
+    <footer id="footer" className="bg-background px-4 sm:px-6 py-8 sm:py-12 md:py-16">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 md:gap-8 mb-12 sm:mb-16">
           {/* Follow us section */}
           <div className="md:col-span-4">
             <h3 className="text-foreground/60 text-lg mb-6">Follow us</h3>
@@ -49,21 +49,23 @@ const Footer = () => {
 
           {/* Contact section with image */}
           <div className="md:col-span-8">
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-              <div className="rounded-3xl overflow-hidden w-full max-w-[180px] aspect-square bg-gray-800">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-4 sm:gap-6">
+              <div className="rounded-3xl overflow-hidden w-full max-w-[150px] sm:max-w-[180px] aspect-square bg-gray-800">
                 <img
                   src="/lovable-uploads/giphy.gif"
                   alt="Contact"
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div>
-                <h3 className="text-foreground/60 text-lg">
+                <h3 className="text-foreground/60 text-base sm:text-lg">
                   General Inquiries
                 </h3>
                 <a
                   href="mailto:contact@zeroreality.in"
-                  className="text-2xl md:text-4xl font-bold text-foreground hover:text-neon-green transition-colors break-all"
+                  className="text-xl sm:text-2xl md:text-4xl font-bold text-foreground hover:text-neon-green transition-colors break-all"
                 >
                   contact@zeroreality.in
                 </a>
@@ -71,16 +73,16 @@ const Footer = () => {
             </div>
 
             {/* Get in touch oval */}
-            <div className="mt-12 md:mt-16 relative">
+            <div className="mt-8 sm:mt-12 md:mt-16 relative">
               <motion.a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdiLKMVpqNxSM_qiA3-X0467CZV8zAyXpF3XekPpLkU-RJZUg/viewform?usp=dialog"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-foreground/20 rounded-full py-3 md:py-4 px-6 md:px-8 w-fit transform -rotate-12 inline-block cursor-pointer"
+                className="border border-foreground/20 rounded-full py-3 md:py-4 px-4 sm:px-6 md:px-8 w-fit transform -rotate-12 inline-block cursor-pointer"
                 whileHover={{ scale: 1.05, rotate: -8 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <span className="text-xl md:text-3xl font-medium">
+                <span className="text-lg sm:text-xl md:text-3xl font-medium">
                   GET IN TOUCH <span className="inline-block ml-2">☺</span>
                 </span>
               </motion.a>
@@ -89,17 +91,17 @@ const Footer = () => {
         </div>
 
         {/* Bottom copyright section */}
-        <div className="flex flex-col md:flex-row justify-between items-start border-t border-foreground/10 pt-8">
-          <div className="mb-8 md:mb-0">
-            <p className="text-4xl md:text-6xl lg:text-7xl font-bold">
-              <span className="inline-block mr-3">©</span>
+        <div className="flex flex-col md:flex-row justify-between items-start border-t border-foreground/10 pt-6 sm:pt-8">
+          <div className="mb-6 sm:mb-8 md:mb-0">
+            <p className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold">
+              <span className="inline-block mr-2 sm:mr-3">©</span>
               {currentYear}
-              <span className="block md:inline-block md:ml-6 text-4xl md:text-6xl lg:text-7xl font-bold">
+              <span className="block md:inline-block md:ml-4 lg:ml-6 text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold">
                 Zero Reality
               </span>
             </p>
           </div>
-          <div className="max-w-sm text-foreground/60 text-sm md:text-right mt-4 md:mt-4">
+          <div className="max-w-sm text-foreground/60 text-xs sm:text-sm md:text-right mt-2 sm:mt-4">
             <p>
               ASSISTING STARTUPS AND BUSINESSES TO LAUNCH THEIR DIGITAL PRODUCTS
               EFFICIENTLY AND EFFORTLESSLY

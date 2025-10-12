@@ -73,7 +73,7 @@ const ServicesShowcase = () => {
           opacity,
           scale,
         }}
-        className="relative mt-8 py-12 px-4"
+        className="relative mt-8 py-8 sm:py-12 px-4"
       >
         {/* Empty div for scroll target positioning */}
         <div
@@ -98,18 +98,19 @@ const ServicesShowcase = () => {
           >
             <motion.span
               className="text-xl font-bold text-white whitespace-nowrap"
+              style={{ fontFamily: '"Inter Tight", sans-serif' }}
               animate={{
                 scale: [1, 1.05, 1],
                 transition: { duration: 2, repeat: Infinity },
               }}
             >
-              WE OFFER 🏄‍♂️
+              WE OFFER 🪄
             </motion.span>
           </motion.div>
 
           {/* Green rectangle with services */}
           <motion.div
-            className="bg-[#8BFF00] rounded-3xl px-6 py-8 relative z-10"
+            className="bg-[#8BFF00] rounded-3xl px-4 sm:px-6 py-6 sm:py-8 relative z-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -118,11 +119,11 @@ const ServicesShowcase = () => {
               transition: { duration: 0.3 },
             }}
           >
-            <motion.div className="flex flex-col items-center text-center space-y-5">
+            <motion.div className="flex flex-col items-center text-center space-y-4 sm:space-y-5">
               {services.map((service, index) => (
                 <motion.div
                   key={index}
-                  className="text-2xl font-bold text-black"
+                  className="text-lg sm:text-xl md:text-2xl font-bold text-black"
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false, amount: 0.1 }}
@@ -204,6 +205,7 @@ const ServicesShowcase = () => {
           >
             <motion.span
               className="text-2xl md:text-4xl font-medium text-white whitespace-nowrap"
+              style={{ fontFamily: '"Inter Tight", sans-serif' }}
               animate={{
                 scale: [1, 1.05, 1],
                 transition: { duration: 3, repeat: Infinity },
@@ -218,7 +220,7 @@ const ServicesShowcase = () => {
                 }}
                 className="inline-block ml-2"
               >
-                🏄‍♂️
+                🪄
               </motion.span>
             </motion.span>
           </motion.div>

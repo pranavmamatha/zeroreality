@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useTheme } from "./ThemeProvider";
 
 const StarIcon = () => {
-  const { theme } = useTheme();
   return (
     <svg
       width="24"
@@ -13,7 +11,7 @@ const StarIcon = () => {
     >
       <path
         d="M12 1L14.594 8.406L22 11L14.594 13.594L12 21L9.406 13.594L2 11L9.406 8.406L12 1Z"
-        fill={theme === "light" ? "black" : "white"}
+        fill="black"
       />
     </svg>
   );
@@ -24,7 +22,6 @@ interface ScrollingBannerProps {
 }
 
 const TextMarquee: React.FC<ScrollingBannerProps> = ({ speed = 60 }) => {
-  const { theme } = useTheme();
   const scrollRef = useRef<HTMLUListElement>(null);
   const [translateX, setTranslateX] = useState(0);
 
@@ -78,13 +75,10 @@ const TextMarquee: React.FC<ScrollingBannerProps> = ({ speed = 60 }) => {
             <p
               style={{
                 fontFamily: "Inter, sans-serif",
-                fontSize: "72px",
+                fontSize: "clamp(48px, 8vw, 72px)",
                 letterSpacing: "-0.02em",
-                lineHeight: "80px",
-                color:
-                  theme === "light"
-                    ? "rgb(0, 0, 0)"
-                    : "rgb(255, 255, 255)",
+                lineHeight: "clamp(56px, 9vw, 80px)",
+                color: "rgb(0, 0, 0)",
                 margin: 0,
                 fontWeight: 700,
                 whiteSpace: "nowrap",
@@ -119,7 +113,7 @@ const TextMarquee: React.FC<ScrollingBannerProps> = ({ speed = 60 }) => {
         listStyleType: "none",
         opacity: 1,
         overflow: "hidden",
-        backgroundColor: theme === "light" ? "white" : "black",
+        backgroundColor: "white",
       }}
     >
       <ul

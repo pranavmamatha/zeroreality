@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import {
   motion,
   AnimatePresence,
-  useScroll,
-  useTransform,
 } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -14,19 +12,16 @@ import SelectedWork from "@/components/SelectedWork";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import BookCall from "@/components/BookCall";
 import Footer from "@/components/Footer";
-import { useTheme } from "@/components/ThemeProvider";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showCalendar, setShowCalendar] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const { theme } = useTheme();
 
-  // Simulate loading
+  // Simulate loading with better performance
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 1000); // Reduced loading time for better UX
     return () => clearTimeout(timer);
   }, []);
 
@@ -93,7 +88,7 @@ const LoadingScreen = () => {
         className="flex flex-col items-center"
       >
         <motion.div
-          className="text-4xl font-bold text-foreground mb-4"
+          className="text-3xl sm:text-4xl font-bold text-foreground mb-4"
           animate={{
             opacity: [0.5, 1, 0.5],
             scale: [0.98, 1.02, 0.98],
@@ -107,12 +102,12 @@ const LoadingScreen = () => {
         >
           ZERO REALITY
         </motion.div>
-        <motion.div className="h-1 w-40 bg-muted rounded-full overflow-hidden">
+        <motion.div className="h-1 w-32 sm:w-40 bg-muted rounded-full overflow-hidden">
           <motion.div
             className="h-full bg-neon-green"
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
           />
         </motion.div>
 

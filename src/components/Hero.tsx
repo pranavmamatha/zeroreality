@@ -96,21 +96,21 @@ const Hero = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative px-6 py-12 overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 py-8 sm:py-12 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background/10 to-background/30" />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="z-10 max-w-7xl mx-auto pt-12 w-full px-6 md:px-12"
+        className="z-10 max-w-7xl mx-auto pt-8 sm:pt-12 w-full px-4 sm:px-6 md:px-12"
       >
-        <div className="flex flex-col lg:flex-row items-center gap-12">
+        <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
           {/* Left side - Text content */}
           <div className="flex-1 lg:pl-8">
             <motion.div variants={itemVariants} className="text-left">
               <h1
-                className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 leading-tight"
                 style={{
                   fontFamily: '"BBH Sans Bartle", system-ui, sans-serif',
                 }}
@@ -120,19 +120,23 @@ const Hero = () => {
                 Our Work.
               </h1>
 
-              <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl">
+              <p 
+                className="text-sm sm:text-base md:text-lg text-foreground/80 mb-6 max-w-2xl"
+                style={{ fontFamily: '"Inter Tight", sans-serif' }}
+              >
                 Get tools specially made for your business needs. Built for
                 teams of any size. Secure, flexible, and ready to deliver real
                 results. Change how you work and run your business.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <motion.button
                   variants={buttonVariants}
                   whileHover="hover"
                   whileTap={{ scale: 0.95 }}
                   onClick={scrollToBookCall}
-                  className="relative flex items-center justify-center gap-4 bg-neon-green hover:bg-neon-green/90 text-black py-4 px-8 rounded-full overflow-hidden group cursor-pointer font-medium text-lg"
+                  className="relative flex items-center justify-center gap-3 bg-neon-green hover:bg-neon-green/90 text-black py-3 px-6 rounded-full overflow-hidden group cursor-pointer font-medium text-base focus-visible:ring-2 focus-visible:ring-neon-green focus-visible:ring-offset-2"
+                  aria-label="Book a call to discuss your project needs"
                 >
                   <Calendar className="mr-2 h-5 w-5" /> Book a Call Now
                 </motion.button>
@@ -142,9 +146,10 @@ const Hero = () => {
                   whileHover="hover"
                   whileTap={{ scale: 0.95 }}
                   onClick={scrollToWorks}
-                  className="relative flex items-center justify-center gap-4 bg-transparent border border-foreground/20 text-foreground py-4 px-8 rounded-full overflow-hidden group cursor-pointer"
+                  className="relative flex items-center justify-center gap-3 bg-transparent border border-foreground/20 text-foreground py-3 px-6 rounded-full overflow-hidden group cursor-pointer focus-visible:ring-2 focus-visible:ring-foreground/20 focus-visible:ring-offset-2"
+                  aria-label="View our portfolio of work"
                 >
-                  <span className="z-10 font-medium text-lg">
+                  <span className="z-10 font-medium text-base">
                     View Our Work
                   </span>
                   <motion.div

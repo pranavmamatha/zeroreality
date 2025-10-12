@@ -1,46 +1,80 @@
 
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
 
 interface ProjectCardProps {
   title: string;
   description: string;
   image: string;
   tags: string[];
-  bgColor: string;
+  isLandscape?: boolean;
+  delay?: number;
+  descriptionColor?: string;
+  techs?: string;
 }
 
-const ProjectCard = ({ title, description, image, tags, bgColor }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, image, tags, isLandscape = false, delay = 0, descriptionColor = "text-white/48", techs }: ProjectCardProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
-      className={`rounded-3xl overflow-hidden ${bgColor} p-8 pb-0 flex flex-col h-full`}
+      transition={{ duration: 0.8, delay }}
+      viewport={{ once: true, amount: 0.3 }}
+      className="relative rounded-2xl overflow-hidden group cursor-pointer"
+      whileHover={{ 
+        scale: 1.02,
+        transition: { duration: 0.3 }
+      }}
     >
-      <div className="mb-6">
-        <h3 className="text-3xl md:text-4xl font-bold mb-2">{title}</h3>
-        <p className="text-sm md:text-base text-foreground/70">{description}</p>
-        <div className="flex flex-wrap gap-2 mt-4">
-          {tags.map((tag, index) => (
-            <Badge 
-              key={index} 
-              variant="outline" 
-              className="bg-background/10 border-transparent text-foreground backdrop-blur-sm"
-            >
-              {tag}
-            </Badge>
-          ))}
-        </div>
-      </div>
-      
-      <div className="mt-auto">
+      {/* Project Image */}
+      <div className="relative">
         <img 
           src={image} 
           alt={title} 
-          className="w-full h-auto object-cover rounded-t-lg translate-y-2 shadow-xl" 
+          className={`w-full ${isLandscape ? 'h-[300px] sm:h-[400px]' : 'h-[400px] sm:h-[500px]'} object-cover`}
+          loading="lazy"
+          decoding="async"
         />
+      </div>
+      
+      {/* Details Section Below Image */}
+      <div 
+        className="backdrop-blur-[40px] bg-white/[0.04] border border-white/[0.07] p-4 sm:p-6"
+      >
+        {/* Project Title */}
+        <div className="flex items-center mb-3">
+          <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+          <h3 
+            className="text-xl sm:text-2xl font-semibold text-black"
+            style={{ fontFamily: '"ClashDisplay-Semibold", sans-serif', fontWeight: 400 }}
+          >
+            {title}
+          </h3>
+        </div>
+        
+        
+        {/* Description */}
+        <p 
+          className="text-sm text-gray-500 mb-3"
+          style={{ fontFamily: '"Inter Tight", sans-serif' }}
+        >
+          {description}
+        </p>
+        
+        {/* Techs */}
+        {techs && (
+          <div className="mt-3">
+            <div 
+              className="inline-block px-3 py-1 border border-gray-300 rounded-full"
+            >
+              <p 
+                className="text-xs text-gray-600 font-medium"
+                style={{ fontFamily: '"Inter Tight", sans-serif' }}
+              >
+                Techs - {techs}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </motion.div>
   );
@@ -48,41 +82,29 @@ const ProjectCard = ({ title, description, image, tags, bgColor }: ProjectCardPr
 
 const ProjectShowcase = () => {
   return (
-    <div id="project-showcase" className="w-full bg-background py-16 md:py-24 px-4 md:px-12 lg:px-24">
+    <div id="project-showcase" className="w-full bg-white py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           <ProjectCard
-            title="SWAPR DAPP"
-            description="Your DeFi power tool."
-            image="/placeholder.svg"
+            title="Nudge"
+            description="An ERP software"
+            image="/project-images/project1.png"
             tags={["DESIGN SYSTEM", "UI", "BRANDING"]} 
-            bgColor="bg-purple-900"
+            isLandscape={true}
+            delay={0}
+            descriptionColor="text-white/48"
+            techs="Scalable Architecture, AI analytics"
           />
           
           <ProjectCard
-            title="ATOMIZE"
-            description="Design System for Figma"
-            image="/placeholder.svg"
-            tags={["DESIGN SYSTEM", "BRANDING"]} 
-            bgColor="bg-blue-600"
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <ProjectCard
-            title="STACKLY"
-            description="Stack Crypto over time"
-            image="/placeholder.svg"
+            title="ProPg"
+            description="Helps Pg owners to Keep Track of the tenents"
+            image="/project-images/project2.png"
             tags={["DESIGN SYSTEM", "UI", "BRANDING"]} 
-            bgColor="bg-green-700"
-          />
-          
-          <ProjectCard
-            title="CHIPP.AI"
-            description="Build, share and sell your AI tools."
-            image="/placeholder.svg"
-            tags={["DESIGN SYSTEM", "UI"]} 
-            bgColor="bg-yellow-400"
+            isLandscape={false}
+            delay={0.2}
+            descriptionColor="text-white/48"
+            techs="Cross-platform large and secure Databases"
           />
         </div>
       </div>

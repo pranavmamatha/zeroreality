@@ -152,9 +152,9 @@ const BookCall: React.FC<BookCallProps> = (props = {}) => {
           }}
         >
           <div className="bg-white rounded-2xl w-full max-w-4xl max-h-[80vh] overflow-hidden relative">
-            {/* Close button only */}
+            {/* Header with logo and close button */}
             <div className="relative bg-white rounded-t-2xl px-6 py-2">
-              <div className="flex justify-end">
+              <div className="flex items-center justify-between">       
                 <button
                   className="text-gray-400 hover:text-gray-600 transition-colors p-2 hover:bg-gray-100 rounded-full"
                   onClick={handleCloseCalendar}
@@ -169,7 +169,12 @@ const BookCall: React.FC<BookCallProps> = (props = {}) => {
               <div className="absolute inset-0 bg-white flex items-center justify-center z-20">
                 <div className="flex flex-col items-center gap-4">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-green"></div>
-                  <p className="text-gray-600 text-sm">Loading calendar...</p>
+                  <p 
+                    className="text-gray-600 text-sm"
+                    style={{ fontFamily: '"Inter Tight", sans-serif' }}
+                  >
+                    Loading calendar...
+                  </p>
                 </div>
               </div>
             )}
@@ -192,7 +197,7 @@ const BookCall: React.FC<BookCallProps> = (props = {}) => {
 
       <section
         id="book-call"
-        className="px-6 relative overflow-hidden bg-background md:pt-10 md:pb-32 flex justify-center items-center"
+        className="px-4 sm:px-6 relative overflow-hidden bg-background py-10 sm:py-16 md:pt-10 md:pb-32 flex justify-center items-center"
       >
         <div className="max-w-7xl mx-auto relative w-full">
           {/* Left side decoration - rotated radial lines */}
@@ -310,7 +315,7 @@ const BookCall: React.FC<BookCallProps> = (props = {}) => {
           {/* Main content - centered */}
           <div className="flex justify-center">
             <motion.div
-              className="w-full max-w-[400px] border-4 border-neon-green rounded-[2rem] p-6 md:p-8 relative"
+              className="w-full max-w-[350px] sm:max-w-[400px] border-4 border-neon-green rounded-[2rem] p-4 sm:p-6 md:p-8 relative"
               initial={{
                 opacity: 0,
                 scale: 0.9,
@@ -340,20 +345,22 @@ const BookCall: React.FC<BookCallProps> = (props = {}) => {
               >
                 <motion.p
                   className="text-neon-green text-lg md:text-xl mb-3"
+                  style={{ fontFamily: '"Inter Tight", sans-serif' }}
                   variants={itemVariants}
                 >
                   Ready to talk?
                 </motion.p>
 
                 <motion.h2
-                  className="text-3xl md:text-4xl font-bold mb-3"
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3"
                   variants={itemVariants}
                 >
                   Lets Discuss
                 </motion.h2>
 
                 <motion.p
-                  className="text-foreground/60 text-lg mb-6"
+                  className="text-foreground/60 text-base sm:text-lg mb-6"
+                  style={{ fontFamily: '"Inter Tight", sans-serif' }}
                   variants={itemVariants}
                 >
                   Find what you want.
@@ -382,7 +389,12 @@ const BookCall: React.FC<BookCallProps> = (props = {}) => {
                       <div className="text-neon-green">
                         <Check size={20} />
                       </div>
-                      <p className="text-foreground/80 text-sm">{feature}</p>
+                      <p 
+                        className="text-foreground/80 text-sm"
+                        style={{ fontFamily: '"Inter Tight", sans-serif' }}
+                      >
+                        {feature}
+                      </p>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -392,9 +404,10 @@ const BookCall: React.FC<BookCallProps> = (props = {}) => {
                   className="flex justify-center"
                 >
                   <Button
-                    className="rounded-full text-black bg-neon-green hover:bg-neon-green/90 text-base py-6 px-12 h-auto text-lg font-semibold"
+                    className="rounded-full text-black bg-neon-green hover:bg-neon-green/90 text-sm sm:text-base py-4 sm:py-6 px-8 sm:px-12 h-auto text-base sm:text-lg font-semibold focus-visible:ring-2 focus-visible:ring-neon-green focus-visible:ring-offset-2"
                     size="lg"
                     onClick={handleBookCallClick}
+                    aria-label="Book an introductory call to discuss your project"
                   >
                     <ArrowRight className="mr-2 h-4 w-4" /> Book an Intro Call
                   </Button>

@@ -97,7 +97,7 @@ const Navbar = ({ showCalendar = false }: NavbarProps) => {
       initial="hidden"
       animate={showCalendar ? "hidden" : "visible"}
       variants={navVariants}
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-12"
+      className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 py-2 sm:py-3 md:px-8"
       style={{
         backdropFilter: "none",
         display: showCalendar ? "none" : "block",
@@ -111,7 +111,7 @@ const Navbar = ({ showCalendar = false }: NavbarProps) => {
               backdropFilter: "blur(20px)",
               backgroundColor: "rgba(255, 255, 255, 0.1)",
               border: "1px solid rgba(255, 255, 255, 0.2)",
-              padding: "12px 20px",
+              padding: "10px 16px",
               boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
             }}
           >
@@ -130,9 +130,13 @@ const Navbar = ({ showCalendar = false }: NavbarProps) => {
                 boxShadow: "0 0 20px rgba(139, 255, 0, 0.2), inset 0 0 20px rgba(139, 255, 0, 0.1)",
               }}
             />
-            <span className="text-gray-800 text-xl font-bold tracking-tight">
-              ZERO REALITY
-            </span>
+            <img 
+              src="/lovable-uploads/Reality Logo-cropped.svg" 
+              alt="ZeroReality Logo" 
+              className="h-5 sm:h-6 w-auto"
+              loading="eager"
+              decoding="async"
+            />
           </div>
         </motion.div>
 
@@ -171,16 +175,16 @@ const Navbar = ({ showCalendar = false }: NavbarProps) => {
                       height: "100%",
                       borderRadius: "12px",
                       opacity: "1",
-                      padding: "10px 20px",
+                      padding: "8px 16px",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       textDecoration: "none",
-                      fontWeight: "700",
-                      fontSize: "14px",
-                      lineHeight: "20px",
+                      fontWeight: "6  00",
+                      fontSize: "12px",
+                      lineHeight: "18px",
                       color: "rgb(153, 255, 51)",
-                      fontFamily: "'Inter', 'Inter Placeholder', sans-serif",
+                      fontFamily: "'Inter Tight', sans-serif",
                     }}
                     onClick={(e) => {
                       e.preventDefault();
@@ -204,7 +208,7 @@ const Navbar = ({ showCalendar = false }: NavbarProps) => {
                 backdropFilter: "blur(20px)",
                 backgroundColor: "rgba(255, 255, 255, 0.1)",
                 border: "1px solid rgba(255, 255, 255, 0.2)",
-                padding: "8px 12px",
+                padding: "6px 10px",
                 boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
               }}
             >
@@ -246,16 +250,16 @@ const Navbar = ({ showCalendar = false }: NavbarProps) => {
                 height: "100%",
                 borderRadius: "12px",
                 opacity: "1",
-                padding: "10px 20px",
+                padding: "8px 16px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 textDecoration: "none",
-                fontWeight: "700",
-                fontSize: "14px",
-                lineHeight: "20px",
+                fontWeight: "900",
+                fontSize: "12px",
+                lineHeight: "18px",
                 color: "rgb(153, 255, 51)",
-                fontFamily: "'Inter', 'Inter Placeholder', sans-serif",
+                fontFamily: "'Inter Tight', sans-serif",
               }}
               onClick={(e) => {
                 e.preventDefault();
@@ -272,10 +276,17 @@ const Navbar = ({ showCalendar = false }: NavbarProps) => {
 };
 
 const NavItem = ({ text, onClick }: { text: string; onClick?: () => void }) => {
+  // Special styling for "WORK" text
+  const isWorkText = text === "WORK";
+  
   return (
     <motion.a
       onClick={onClick}
-      className="text-gray-700 hover:text-gray-900 transition-colors text-sm font-medium tracking-wide cursor-pointer uppercase py-3 px-4 relative"
+      className="text-gray-900 hover:text-gray-900 transition-colors text-xs font-bold tracking-wide cursor-pointer uppercase py-2 px-3 relative"
+      style={{ 
+        fontFamily: isWorkText ? '"Inter Tight", sans-serif' : '"Inter Tight", sans-serif',
+        fontWeight: isWorkText ? 400 : 'normal'
+      }}
       whileHover={{
         scale: 1.05,
       }}

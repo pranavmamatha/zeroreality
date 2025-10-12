@@ -19,7 +19,7 @@ const ReasonCard = ({
 }: ReasonCardProps) => {
   return (
     <motion.div
-      className="relative w-full rounded-2xl border border-gray-500 bg-white p-8 overflow-hidden"
+      className="relative w-full rounded-2xl border border-gray-500 bg-white p-6 sm:p-8 overflow-hidden"
       initial={{
         opacity: 0,
         y: 30,
@@ -43,10 +43,11 @@ const ReasonCard = ({
         boxShadow: "0 12px 24px rgba(155, 135, 245, 0.12)",
       }}
     >
-      <div className="flex flex-col md:flex-row md:items-start gap-6">
+      <div className="flex flex-col md:flex-row md:items-start gap-4 sm:gap-6">
         {/* Number */}
         <motion.div
-          className="text-5xl font-bold text-gray-400 flex-shrink-0"
+          className="text-4xl sm:text-5xl font-bold text-gray-400 flex-shrink-0"
+          style={{ fontFamily: '"Inter Tight", sans-serif', fontStyle: 'italic' }}
           initial={{
             opacity: 0,
           }}
@@ -88,7 +89,8 @@ const ReasonCard = ({
               <div className="text-[#9b87f5] w-6 h-6">{icon}</div>
             </motion.div>
             <motion.h3
-              className="text-xl md:text-2xl font-bold text-[#9b87f5]"
+              className="text-lg sm:text-xl md:text-2xl font-bold text-[#9b87f5]"
+              style={{ fontFamily: '"ClashDisplay-Bold", sans-serif' }}
               initial={{
                 opacity: 0,
                 x: -10,
@@ -110,7 +112,8 @@ const ReasonCard = ({
           </div>
 
           <motion.p
-            className="text-gray-600 text-sm md:text-base leading-relaxed"
+            className="text-gray-600 text-sm sm:text-base leading-relaxed"
+            style={{ fontFamily: '"Inter Tight", sans-serif', fontStyle: 'normal' }}
             initial={{
               opacity: 0,
             }}
@@ -178,7 +181,7 @@ const WhyUs = () => {
     <div
       id="why-us"
       ref={containerRef}
-      className="relative py-20 px-4 sm:px-6 lg:px-8 bg-white"
+      className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white"
     >
       {/* Background elements */}
       <motion.div
@@ -209,14 +212,14 @@ const WhyUs = () => {
 
       {/* Title section */}
       <motion.div
-        className="max-w-7xl mx-auto mb-16 text-center"
+        className="max-w-7xl mx-auto mb-12 sm:mb-16 text-center"
         style={{
           y: titleY,
           opacity: titleOpacity,
         }}
       >
         <motion.div
-          className="inline-block bg-white px-8 py-4 rounded-full border-2 border-[#9b87f5]"
+          className="inline-block bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-[#9b87f5]"
           initial={{
             opacity: 0,
             scale: 0.95,
@@ -233,7 +236,10 @@ const WhyUs = () => {
             ease: "easeOut",
           }}
         >
-          <span className="text-3xl md:text-4xl font-bold text-gray-900 flex items-center justify-center gap-2">
+          <span 
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 flex items-center justify-center gap-2"
+            style={{ fontFamily: '"ClashDisplay-Medium", sans-serif' }}
+          >
             WHY US?
             <motion.span
               animate={{
@@ -254,7 +260,7 @@ const WhyUs = () => {
 
       {/* Cards container */}
       <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4 sm:gap-6">
           {reasons.map((reason, index) => (
             <ReasonCard
               key={index}

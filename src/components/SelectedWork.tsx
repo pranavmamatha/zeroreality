@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
 
 const SelectedWork = () => {
-  const { theme } = useTheme();
 
   const scrollToProjects = () => {
     // Find the ProjectShowcase element and scroll to it
@@ -112,13 +110,14 @@ const SelectedWork = () => {
         <motion.h2
           variants={accentVariants}
           className="text-6xl md:text-7xl lg:text-8xl font-normal text-[#9b87f5] dark:text-[#9b87f5] tracking-tight mb-4"
+          style={{ fontFamily: '"Instrument Serif", serif', fontStyle: 'italic', fontWeight: 400 }}
           whileHover={{
             scale: 1.05,
             color: hoverColor,
             transition: { duration: 0.3 },
           }}
         >
-          Our
+          OUR
         </motion.h2>
 
         <motion.div
@@ -134,11 +133,12 @@ const SelectedWork = () => {
                 key={index}
                 variants={letterVariants}
                 style={{
-                  color: theme === "dark" ? "white" : "black",
-                  fontWeight: 700,
+                  color: "black",
+                  fontWeight: 400,
                   letterSpacing: "0.05em",
+                  fontFamily: '"Inter Tight", sans-serif',
                 }}
-                className="text-6xl md:text-7xl font-bold uppercase tracking-tight lg:text-9xl inline-block"
+                className="text-6xl md:text-7xl uppercase tracking-tight lg:text-9xl inline-block"
                 whileHover={{
                   scale: 1.1,
                   color: hoverColor,
