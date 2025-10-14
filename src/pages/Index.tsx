@@ -101,7 +101,7 @@ const LoadingScreen = () => {
           }}
         >
           <img 
-            src="/workflow/zero.png" 
+            src="/zero.png" 
             alt="Zero Reality" 
             className="h-32 sm:h-40 md:h-48 lg:h-56 w-auto"
           />
