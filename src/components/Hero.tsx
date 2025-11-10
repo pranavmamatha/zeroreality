@@ -173,7 +173,7 @@ const Hero = () => {
             >
               <div className="relative w-full aspect-square flex items-center justify-center">
                 <motion.img
-                  src="/workflow/zero.png"
+                  src="/zero.png"
                   alt="Zero Reality Logo"
                   className="w-64 h-64 lg:w-80 lg:h-80 object-contain"
                   animate={{ rotate: 360 }}
