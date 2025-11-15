@@ -101,11 +101,21 @@ const Footer = () => {
               </span>
             </p>
           </div>
-          <div className="max-w-sm lg:max-w-md text-foreground/60 text-xs sm:text-sm lg:text-right">
-            <p className="leading-relaxed">
-              ASSISTING STARTUPS AND BUSINESSES TO LAUNCH THEIR DIGITAL PRODUCTS
-              EFFICIENTLY AND EFFORTLESSLY
-            </p>
+          <div className="flex flex-col items-end">
+            <div className="mb-4">
+              <a 
+                href="/about" 
+                className="border border-foreground/20 rounded-full py-2 px-4 text-sm sm:text-base md:text-lg font-medium hover:bg-foreground/5 transition-colors"
+              >
+                ABOUT US ℹ️
+              </a>
+            </div>
+            <div className="max-w-sm lg:max-w-md text-foreground/60 text-xs sm:text-sm lg:text-right">
+              <p className="leading-relaxed">
+                ASSISTING STARTUPS AND BUSINESSES TO LAUNCH THEIR DIGITAL PRODUCTS
+                EFFICIENTLY AND EFFORTLESSLY
+              </p>
+            </div>
           </div>
         </div>
 

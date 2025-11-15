@@ -52,6 +52,7 @@ const Index = () => {
               <div className="mt-8 sm:mt-12 md:mt-16 lg:-mt-20">
                 <ProjectShowcase />
               </div>
+              
               <WhyUs />
               <div className="mt-8 sm:mt-12 md:mt-16">
                 <BookCall {...({ showCalendar, setShowCalendar } as any)} />
